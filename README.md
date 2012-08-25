@@ -30,3 +30,11 @@ go to the .m2 repository and add settings.xml if not already present and add the
 
 then run tomcat and run mvn tomcat:deploy to deploy in tomcat (use mvn tomcat:redeploy for doing it again)
 
+some Referneces :
+
+http://www.mkyong.com/maven/how-to-create-a-web-application-project-with-maven/
+http://www.mkyong.com/hibernate/quick-start-maven-hibernate-mysql-example/
+http://stackoverflow.com/questions/3345816/hibernate-projects-and-building-with-maven
+
+
+
