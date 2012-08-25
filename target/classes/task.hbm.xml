@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.example.model.Task" table="task">
+
+		<id name="id" type="int" column="id">
+			<generator class="increment" />
+		</id>
+		<property name="name">
+			<column name="name" />
+		</property>
+		<property name="date">
+			<column name="date" />
+		</property>
+		<property name="description">
+			<column name="description" />
+		</property>
+		<property name="personName">
+			<column name="personName" />
+		</property>
+
+	</class>
+
+</hibernate-mapping>
