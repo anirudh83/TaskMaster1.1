@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Task Master</title>
+<script>
+
+function createTask(){
+document.myform.submit();
+}
+
+function getTodaysTasks(){
+}
+
+</script>
+</head>
+<body>
+<form method="post" action="createTasks.do">
+<div>
+<input type="submit" value="Create a New Task" onclick="javascript:createTask()">
+<input type="submit" value="see todays tasks" onclick="javascript:getTodaysTasks()">
+</div>
+</form>
+</body>
+</html>
