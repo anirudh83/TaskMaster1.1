@@ -1,9 +1,12 @@
 package com.example.persistence;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.example.model.Task;
+
+
 
 public class TaskPersistence {
 
@@ -11,7 +14,8 @@ public class TaskPersistence {
 		Session sess = null;
 		try {
 			System.out.println("got into hibertane");
-			sess = HibernateUtil.currentSession();
+			 SessionFactory sf = HibernateUtil.getSessionFactory();
+			sess = sf.openSession();
 			Transaction tx = sess.beginTransaction();
 			sess.save(task);
 			System.out.println("Successfully data insert in database");
