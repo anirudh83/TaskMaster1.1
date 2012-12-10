@@ -2,23 +2,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Task Master</title>
-<script>
-
-function createTask(){
-document.myform.submit();
-}
-
-function getTodaysTasks(){
-}
-
-</script>
+<title>Insert title here</title>
 </head>
 <body>
 <form method="post" action="createTasks.do">
 <div>
-<input type="submit" value="Create a New Task" onclick="javascript:createTask()">
-<input type="submit" value="see todays tasks" onclick="javascript:getTodaysTasks()">
+<ul>
+<li>Enter Task :<input type="text" name="name"></li>
+<li>Description :<input type="text" name="description"></li>
+<li>Enter Date (dd/mm/yyyy):<input type="text" name="date"></li>
+<li>Enter the person who has to do it : <input type="text" name="personName"></li>
+<li><input type="submit" value="Enter"></li>
 </div>
 </form>
 </body>
