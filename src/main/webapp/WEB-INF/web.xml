@@ -14,4 +14,8 @@
       <servlet-name>TaskServlet</servlet-name>
       <url-pattern>*.do</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>TaskServlet</servlet-name>
+    <url-pattern>/viewTasks</url-pattern>
+</servlet-mapping>
 </web-app>

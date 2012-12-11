@@ -4,9 +4,15 @@
 <%@ page import="java.util.*"%>
 <html>
 <head>
+<script type="text/javascript">
+function backPage(){
+	window.open('index.jsp','_self',false);
+}
+</script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Success</title>
 <h1 align="center">Task Successfully saved!</h1>
+<input type="button" value="Back" onclick="javascript:backPage()">
 </head>
 <body>
 </body>

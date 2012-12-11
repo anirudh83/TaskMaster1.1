@@ -3,13 +3,15 @@ package com.example.service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import com.example.model.Task;
 import com.example.persistence.TaskPersistence;
 
 public class TaskServiceImpl implements TaskService{
 	
-	private TaskPersistence taskPersistence;
+	//TODO : Change with Spring DI
+	private TaskPersistence  taskPersistence = new TaskPersistence();
 	
 	public void saveTask(String name,String description,String date,String personName) throws ParseException{
 		Task task = new Task();
@@ -18,7 +20,6 @@ public class TaskServiceImpl implements TaskService{
 		task.setDate(getFormattedDate(date));
 		task.setPersonName(personName);
 		
-		taskPersistence = new TaskPersistence();
 		taskPersistence.saveTask(task);
 	}
 	private Date getFormattedDate(String date) throws ParseException {
@@ -26,9 +27,12 @@ public class TaskServiceImpl implements TaskService{
 		Date formattedDate = sdf.parse(date);
 		return formattedDate;
 	}
-	public Task getTasksOfTheDay(String date) {
+	public List getTasksOfTheDay(String date) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public List getAllTasks() {
+		return taskPersistence.getAllTasks();
 	}
 
 }

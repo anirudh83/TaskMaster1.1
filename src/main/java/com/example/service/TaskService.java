@@ -1,11 +1,11 @@
 package com.example.service;
 
 import java.text.ParseException;
-
-import com.example.model.Task;
+import java.util.List;
 
 public interface TaskService {
 	
 	public void saveTask(String name,String description,String date,String personName)throws ParseException;
-	public Task getTasksOfTheDay(String date);
+	public List getTasksOfTheDay(String date);
+	public List getAllTasks();
 }
