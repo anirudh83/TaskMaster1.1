@@ -1,17 +1,23 @@
-package com.example.service;
+package com.example.service.impl;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.example.model.Task;
 import com.example.persistence.TaskPersistence;
+import com.example.service.TaskService;
 
+@Service("taskServicebyName")
 public class TaskServiceImpl implements TaskService{
 	
-	//TODO : Change with Spring DI
-	private TaskPersistence  taskPersistence = new TaskPersistence();
+	//this is autowiring by Type, it just checks the implemented class of type
+	@Autowired
+	private TaskPersistence taskPersistence;
 	
 	public void saveTask(String name,String description,String date,String personName) throws ParseException{
 		Task task = new Task();
@@ -27,11 +33,11 @@ public class TaskServiceImpl implements TaskService{
 		Date formattedDate = sdf.parse(date);
 		return formattedDate;
 	}
-	public List getTasksOfTheDay(String date) {
+	public List<Task> getTasksOfTheDay(String date) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	public List getAllTasks() {
+	public List<Task> getAllTasks() {
 		return taskPersistence.getAllTasks();
 	}
 
