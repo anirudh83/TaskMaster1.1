@@ -18,9 +18,7 @@ public class TaskPersistenceImpl implements TaskPersistence{
 	 private SessionFactory sessionFactory;
 
 	public void saveTask(Task task) {
-			Session sess = null;
-		
-			sess = sessionFactory.openSession();
+			Session sess = sessionFactory.openSession();
 			Transaction tx = sess.beginTransaction();
 			sess.save(task);
 			System.out.println("Successfully data inserted in database");
@@ -29,13 +27,11 @@ public class TaskPersistenceImpl implements TaskPersistence{
 	}
 
 	public List<Task> getAllTasks() {
-		Session sess = null;
-		List<Task> result = null;
 			System.out.println("opening session");
-			sess = sessionFactory.openSession();
+			Session sess = sessionFactory.openSession();
 			System.out.println("sessionFactory :" +sessionFactory.getClass());
 			Transaction tx = sess.beginTransaction();
-			result = sess.createQuery("from Task").list();
+			List<Task> result = sess.createQuery("from Task").list();
 			tx.commit();
 		return result;
 	}

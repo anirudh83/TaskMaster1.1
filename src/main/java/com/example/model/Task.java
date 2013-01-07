@@ -1,13 +1,18 @@
 package com.example.model;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "task")
@@ -15,9 +20,23 @@ public class Task {
 	
 	private int id;
 	private String name;
-	private Date date;
+	private Date createdDate;
+	private Date endDate;
 	private String description;
-	private String personName;
+	private User createdBy;
+	
+	public Task(){
+		
+	}
+	
+	public Task(int id, String name,Date createdDate,Date endDate,String description,User createdBy){
+		this.id=id;
+		this.name=name;
+		this.createdDate=createdDate;
+		this.endDate=endDate;
+		this.description=description;
+		this.createdBy=createdBy;
+	}
 	
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
@@ -37,12 +56,12 @@ public class Task {
 		this.name = name;
 	}
 	
-	@Column(name="date")
-	public Date getDate() {
-		return date;
+	@Column(name="createdDate")
+	public Date getCreatedDate() {
+		return createdDate;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 	
 	@Column(name="description")
@@ -52,13 +71,21 @@ public class Task {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	@Column(name="personName")
-	public String getPersonName() {
-		return personName;
+	@ManyToOne(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
+	@JoinColumn(name="userId")
+	public User getCreatedBy() {
+		return createdBy;
 	}
-	public void setPersonName(String personName) {
-		this.personName = personName;
+	public void setCreatedBy(User createdBy) {
+		this.createdBy = createdBy;
+	}
+	
+	@Column(name="endDate")
+	public Date getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 	
 

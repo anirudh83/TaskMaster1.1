@@ -8,6 +8,10 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 		<servlet-name>taskServlet</servlet-name>
 		<servlet-class>com.example.web.TaskServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>loginServlet</servlet-name>
+		<servlet-class>com.example.web.LoginServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>taskServlet</servlet-name>
 		<url-pattern>*.do</url-pattern>
@@ -15,6 +19,10 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 	<servlet-mapping>
 		<servlet-name>taskServlet</servlet-name>
 		<url-pattern>/viewTasks</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>loginServlet</servlet-name>
+		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

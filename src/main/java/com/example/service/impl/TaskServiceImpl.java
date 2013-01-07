@@ -7,12 +7,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.model.Task;
+import com.example.model.User;
 import com.example.persistence.TaskPersistence;
 import com.example.service.TaskService;
 
 @Service("taskServicebyName")
+@Transactional
 public class TaskServiceImpl implements TaskService{
 	
 	//this is autowiring by Type, it just checks the implemented class of type
@@ -23,8 +26,10 @@ public class TaskServiceImpl implements TaskService{
 		Task task = new Task();
 		task.setName(name);
 		task.setDescription(description);
-		task.setDate(getFormattedDate(date));
-		task.setPersonName(personName);
+		task.setCreatedDate(getFormattedDate(date));
+		User user = new User();
+		user.setName(personName);
+		task.setCreatedBy(user);
 		
 		taskPersistence.saveTask(task);
 	}

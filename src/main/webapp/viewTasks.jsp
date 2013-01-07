@@ -16,9 +16,9 @@ function backPage(){
 <body>
 <h1>All Tasks</h1>
 <%
-List<Task> allTasks = (List<Task>)request.getAttribute("tasks");
+	List<Task> allTasks = (List<Task>)request.getAttribute("tasks");
 for(Task task : allTasks){
-	out.print("<br>"+task.getName()+"       To-be-done-by : "+task.getPersonName());
+	out.print("<br>"+task.getName()+"       To-be-done-by : "+task.getCreatedBy().getName());
 }
 %>
 <br>
