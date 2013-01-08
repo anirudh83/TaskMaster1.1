@@ -7,7 +7,7 @@
 <head>
 <script type="text/javascript">
 function backPage(){
-	window.open('index.jsp','_self',false);
+	window.open('home.jsp','_self',false);
 }
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -18,7 +18,8 @@ function backPage(){
 <%
 	List<Task> allTasks = (List<Task>)request.getAttribute("tasks");
 for(Task task : allTasks){
-	out.print("<br>"+task.getName()+"       To-be-done-by : "+task.getCreatedBy().getName());
+	out.print("<br>"+task.getName());
+	out.print("to be done by : "+task.getCreatedBy().getFirstName());
 }
 %>
 <br>

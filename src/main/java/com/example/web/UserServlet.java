@@ -14,9 +14,8 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import com.example.model.User;
 import com.example.service.UserService;
 
-public class LoginServlet extends HttpServlet {
+public class UserServlet extends HttpServlet{
 	
-
 	/**
 	 * 
 	 */
@@ -24,30 +23,44 @@ public class LoginServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 		
-
+		UserService userService = getUserServiceFromSpringContext();
+		RequestDispatcher view =null;
+		
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		String password = request.getParameter("password");
+		String email = request.getParameter("email");
+		String mobileNumber = request.getParameter("mobileNumber");
+		
+		User user = populateUser(firstName, lastName,password,
+				email, mobileNumber);
+		
+		userService.createUser(user);
+		request.getSession().setAttribute("user", user); 
+		view = request.getRequestDispatcher("home.jsp");
 		try {
-			
-			UserService userService = getUserServiceFromSpringContext();
-			RequestDispatcher view =null;
-			String emailAddress = request.getParameter("emailAddress");
-			String password = request.getParameter("password");
-			
-			User persistedUser = userService.getUserByEmail(emailAddress);
-			if(persistedUser!=null && persistedUser.getPassword().equals(password)){
-				request.getSession().setAttribute("user", persistedUser); 
-				view = request.getRequestDispatcher("home.jsp");
-			}else{
-				request.setAttribute("error", "Incorrect username or password, Please try again!");
-				view = request.getRequestDispatcher("index.jsp");
-			}
 			view.forward(request, response);
 		} catch (ServletException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
-//TODO : Change this
+
+	private User populateUser(String firstName, String lastName,
+			String password, String email, String mobileNumber) {
+		User user = new User();
+		user.setFirstName(firstName);
+		user.setLastName(lastName);
+		user.setEmail(email);
+		user.setPassword(password);
+		user.setMobileNum(mobileNumber);
+		return user;
+	}
+
 	private UserService getUserServiceFromSpringContext() {
 		WebApplicationContext context =
 				WebApplicationContextUtils.getRequiredWebApplicationContext(
@@ -55,6 +68,4 @@ public class LoginServlet extends HttpServlet {
 				UserService userService = (UserService) context.getBean("userServiceByName");
 		return userService;
 	}
-	
-
 }

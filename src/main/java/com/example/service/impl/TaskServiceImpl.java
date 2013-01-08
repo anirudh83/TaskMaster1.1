@@ -22,13 +22,11 @@ public class TaskServiceImpl implements TaskService{
 	@Autowired
 	private TaskPersistence taskPersistence;
 	
-	public void saveTask(String name,String description,String date,String personName) throws ParseException{
+	public void saveTask(String name,String description,String date,String personName,User user) throws ParseException{
 		Task task = new Task();
 		task.setName(name);
 		task.setDescription(description);
 		task.setCreatedDate(getFormattedDate(date));
-		User user = new User();
-		user.setName(personName);
 		task.setCreatedBy(user);
 		
 		taskPersistence.saveTask(task);
@@ -45,5 +43,10 @@ public class TaskServiceImpl implements TaskService{
 	public List<Task> getAllTasks() {
 		return taskPersistence.getAllTasks();
 	}
+	@Override
+	public List<Task> getAllTasks(String userName) {
+		return taskPersistence.getAllTasks(userName);
+	}
 
+	
 }

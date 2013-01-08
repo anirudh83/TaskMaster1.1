@@ -6,7 +6,7 @@
 <head>
 <script type="text/javascript">
 function backPage(){
-	window.open('index.jsp','_self',false);
+	window.open('home.jsp','_self',false);
 }
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">

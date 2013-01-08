@@ -6,17 +6,22 @@ function openHomePage(){
 }
 
 function openCreateUserPage(){
-	alert("work in progress");
+	window.open('registerUser.jsp','_self',false);
 }
 </script>
+
+
 <form method="post" action="login">
-<body>
 <h2>Welcome to Task Master</h2>
 <input type="button" value="register" onclick="javascript:openCreateUserPage()">
-Enter your Name: <input type="text" name="username">
-Password: <input type="text" name="password">
-<input type="submit" value="Login">
-<input type="button" value="Show" onclick="javascript:openHomePage();">
-</body>
+</br>
+<h3>Login</h3>
+<div>
+<ul>
+<li>Email Address: <input type="text" name="emailAddress"></li>
+<li>Password: <input type="password" name="password"></li>
+<li><input type="submit" value="Login"><p><font color="red">${error}</font></p></li>
+</ul>
+</div>
 </form>
 </html>

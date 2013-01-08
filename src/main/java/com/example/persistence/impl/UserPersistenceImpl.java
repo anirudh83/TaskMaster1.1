@@ -7,11 +7,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.model.User;
 import com.example.persistence.UserPersistence;
 
 @Repository
+@Transactional
 public class UserPersistenceImpl implements UserPersistence{
 	
 	 @Autowired
@@ -45,11 +47,11 @@ public class UserPersistenceImpl implements UserPersistence{
 	}
 
 	@Override
-	public User getUserByName(String userName) {
+	public User getUserByEmail(String email) {
 		Session sess = getSession();
 		User user = (User) sess.createQuery(
-			    "from User as user where user.name = ?")
-			    .setString(0, userName).uniqueResult();
+			    "from User as user where user.email = ?")
+			    .setString(0, email).uniqueResult();
 		return user;
 	}
 
