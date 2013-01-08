@@ -1,7 +1,7 @@
 <html>
 <script type="text/javascript">
 function openIndexPage(){
-	window.open('index.jsp','_self',false);
+	window.open('/index.jsp','_self',false);
 }
 </script>
 <h2>Register User</h2>

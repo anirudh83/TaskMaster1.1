@@ -37,7 +37,7 @@ public class UserServlet extends HttpServlet{
 		
 		userService.createUser(user);
 		request.getSession().setAttribute("user", user); 
-		view = request.getRequestDispatcher("home.jsp");
+		view = request.getRequestDispatcher("/home.jsp");
 		try {
 			view.forward(request, response);
 		} catch (ServletException e) {

@@ -1,10 +1,6 @@
 <html>
 <script type="text/javascript">
 
-function openHomePage(){
-	window.open('login','_self',false);
-}
-
 function openCreateUserPage(){
 	window.open('registerUser.jsp','_self',false);
 }

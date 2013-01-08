@@ -10,7 +10,7 @@ function backPage(){
 	window.open('home.jsp','_self',false);
 }
 </script>
-<form method="post" action="create">
+<form method="post" action="task/create">
 <div>
 <ul>
 <li>Enter Task :<input type="text" name="name"></li>

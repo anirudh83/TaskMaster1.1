@@ -16,13 +16,17 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 		<servlet-name>userServlet</servlet-name>
 		<servlet-class>com.example.web.UserServlet</servlet-class>
 	</servlet>
+	<filter>
+		<filter-name>loginFilter</filter-name>
+		<filter-class>com.example.web.LoginFilter</filter-class>
+	</filter>
 	<servlet-mapping>
 		<servlet-name>taskServlet</servlet-name>
-		<url-pattern>/create</url-pattern>
+		<url-pattern>/task/create</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>taskServlet</servlet-name>
-		<url-pattern>/viewTasks</url-pattern>
+		<url-pattern>/task/viewTasks</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>loginServlet</servlet-name>
@@ -32,6 +36,10 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 		<servlet-name>userServlet</servlet-name>
 		<url-pattern>/createUser</url-pattern>
 	</servlet-mapping>
+	<filter-mapping>
+    	<filter-name>loginFilter</filter-name>
+    	<url-pattern>/task/*</url-pattern>
+    </filter-mapping>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>

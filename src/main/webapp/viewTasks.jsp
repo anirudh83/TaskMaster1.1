@@ -7,7 +7,7 @@
 <head>
 <script type="text/javascript">
 function backPage(){
-	window.open('home.jsp','_self',false);
+	window.open('/taskMaster1.1/home.jsp','_self',false);
 }
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

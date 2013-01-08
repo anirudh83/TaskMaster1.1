@@ -2,7 +2,7 @@
 <%@ page import="com.example.model.User"%>
 <script type="text/javascript">
 function openViewTasks(){
-	window.open('viewTasks','_self',false);
+	window.open('task/viewTasks','_self',false);
 }
 
 function openCreateTaskForm(){
