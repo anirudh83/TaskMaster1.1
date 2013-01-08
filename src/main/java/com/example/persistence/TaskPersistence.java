@@ -9,4 +9,5 @@ public interface TaskPersistence {
 	void saveTask(Task task);
 	List<Task> getAllTasks();
 	List<Task> getAllTasks(String userName);
+	void deleteTask(int id);
 }

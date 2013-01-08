@@ -47,6 +47,10 @@ public class TaskServiceImpl implements TaskService{
 	public List<Task> getAllTasks(String userName) {
 		return taskPersistence.getAllTasks(userName);
 	}
+	@Override
+	public void deleteTask(int id) {
+		taskPersistence.deleteTask(id);
+	}
 
 	
 }

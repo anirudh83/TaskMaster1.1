@@ -12,4 +12,5 @@ public interface TaskService {
 	List<Task> getTasksOfTheDay(String date);
 	List<Task> getAllTasks();
 	List<Task> getAllTasks(String email);
+	void deleteTask(int id);
 }

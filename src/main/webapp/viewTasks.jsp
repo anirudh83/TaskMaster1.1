@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 <%@ page import="com.example.model.Task" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,13 +16,21 @@ function backPage(){
 </head>
 <body>
 <h1>All Tasks</h1>
-<%
-	List<Task> allTasks = (List<Task>)request.getAttribute("tasks");
-for(Task task : allTasks){
-	out.print("<br>"+task.getName());
-	out.print("to be done by : "+task.getCreatedBy().getFirstName());
-}
-%>
+<table border="1">
+<th>Task</th>
+<th>Person Name</th>
+<c:forEach items="${tasks}" var="task">
+<tr>
+<td>
+${task.name}
+</td>
+<td>
+${task.createdBy.firstName}
+</td>
+<td><a href="viewTasks?action=delete&id=${task.id}">delete</a></td>
+</tr>
+</c:forEach>
+</table>
 <br>
 <input type="button" value="Back" onclick="javascript:backPage()">
 </body>

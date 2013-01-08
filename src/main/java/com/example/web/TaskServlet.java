@@ -57,6 +57,13 @@ public class TaskServlet extends HttpServlet {
 	
 	public void doGet(HttpServletRequest request,HttpServletResponse response){
 		try {
+			String action = (String)request.getParameter("action");
+			System.out.println("action : "+action);
+			if("delete".equalsIgnoreCase(action)){
+				Integer id = Integer.parseInt(request.getParameter("id"));
+				System.out.println("deleting task with id :"+id);
+				getTaskServiceFromSpringContext().deleteTask(id);
+			}
 			String email = ((User)request.getSession().getAttribute("user")).getEmail();
 			List<Task> tasks = 	getTaskServiceFromSpringContext().getAllTasks(email);
 			request.setAttribute("tasks", tasks);

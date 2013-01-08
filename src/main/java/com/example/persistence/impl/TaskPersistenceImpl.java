@@ -50,5 +50,12 @@ public class TaskPersistenceImpl implements TaskPersistence{
 		return tasks;
 	}
 
+	@Override
+	public void deleteTask(int id) {
+		Session sess = getSession();
+		sess.delete(sess.load(Task.class, id));
+		sess.flush();
+	}
+
 
 }
