@@ -65,7 +65,7 @@ public class UserServlet extends HttpServlet{
 		WebApplicationContext context =
 				WebApplicationContextUtils.getRequiredWebApplicationContext(
 				getServletContext());
-				UserService userService = (UserService) context.getBean("userServiceByName");
+				UserService userService = (UserService) context.getBean("userService");
 		return userService;
 	}
 }

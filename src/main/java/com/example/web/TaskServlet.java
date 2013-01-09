@@ -51,7 +51,7 @@ public class TaskServlet extends HttpServlet {
 		WebApplicationContext context =
 				WebApplicationContextUtils.getRequiredWebApplicationContext(
 				getServletContext());
-				TaskService taskService = (TaskService) context.getBean("taskServicebyName");
+				TaskService taskService = (TaskService) context.getBean("taskService");
 		return taskService;
 	}
 	

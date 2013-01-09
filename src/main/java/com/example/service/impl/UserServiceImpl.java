@@ -10,7 +10,7 @@ import com.example.model.User;
 import com.example.persistence.UserPersistence;
 import com.example.service.UserService;
 
-@Service("userServiceByName")
+@Service
 @Transactional
 public class UserServiceImpl implements UserService{
 	

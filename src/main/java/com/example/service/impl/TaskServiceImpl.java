@@ -14,7 +14,7 @@ import com.example.model.User;
 import com.example.persistence.TaskPersistence;
 import com.example.service.TaskService;
 
-@Service("taskServicebyName")
+@Service
 @Transactional
 public class TaskServiceImpl implements TaskService{
 	
