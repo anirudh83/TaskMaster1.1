@@ -36,7 +36,7 @@ public class TaskServlet extends HttpServlet {
 			String personName = request.getParameter("personName");
 			taskService.saveTask(name, description, date, personName,user);
 			
-			RequestDispatcher view = request.getRequestDispatcher("/success.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("success.jsp");
 			view.forward(request, response);
 		} catch (ServletException e) {
 			e.printStackTrace();
@@ -67,7 +67,7 @@ public class TaskServlet extends HttpServlet {
 			String email = ((User)request.getSession().getAttribute("user")).getEmail();
 			List<Task> tasks = 	getTaskServiceFromSpringContext().getAllTasks(email);
 			request.setAttribute("tasks", tasks);
-			RequestDispatcher view = request.getRequestDispatcher("/viewTasks.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("viewTasks.jsp");
 			view.forward(request, response);
 		} catch (ServletException e) {
 			e.printStackTrace();

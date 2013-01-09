@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 			User persistedUser = userService.getUserByEmail(emailAddress);
 			if(persistedUser!=null && persistedUser.getPassword().equals(password)){
 				request.getSession().setAttribute("user", persistedUser); 
-				view = request.getRequestDispatcher("home.jsp");
+				view = request.getRequestDispatcher("task/home.jsp");
 			}else{
 				request.setAttribute("error", "Incorrect username or password, Please try again!");
 				view = request.getRequestDispatcher("index.jsp");
@@ -56,5 +56,26 @@ public class LoginServlet extends HttpServlet {
 		return userService;
 	}
 	
+/**
+ * Used for log out
+ */
 
+	
+	public void doGet(HttpServletRequest request, HttpServletResponse response){
+		
+			if(request.getSession().getAttribute("user")!=null){
+				request.getSession().invalidate();
+			}
+		RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+		request.setAttribute("error", "Logged out successfully!");
+		try {
+			view.forward(request, response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

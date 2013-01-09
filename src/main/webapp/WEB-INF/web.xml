@@ -33,6 +33,10 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
+		<servlet-name>loginServlet</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>userServlet</servlet-name>
 		<url-pattern>/createUser</url-pattern>
 	</servlet-mapping>
