@@ -13,4 +13,5 @@ public interface TaskService {
 	List<Task> getAllTasks();
 	List<Task> getAllTasks(String email);
 	void deleteTask(int id);
+	void saveTask(Task task);
 }

@@ -2,11 +2,11 @@
 <%@ page import="com.example.form.UserForm"%>
 <script type="text/javascript">
 function openViewTasks(){
-	window.open('/taskMaster1.1/task/viewTasks','_self',false);
+	window.open('view','_self',false);
 }
 
 function openCreateTaskForm(){
-	window.open('/taskMaster1.1/task/createTask.jsp','_self',false);
+	window.open('showCreate','_self',false);
 }
 
 function logout(){
@@ -14,9 +14,10 @@ function logout(){
 }
 </script>
 <body>
-<h2>Welcome to Task Master, <%=((UserForm)request.getAttribute("user")).getFirstName()%></h2>
+<h2>Welcome to Task Master, ${user.firstName}</h2>
 <input type="button" value="my Tasks" onclick="javascript:openViewTasks()">
 <input type="button" value="create Task" onclick="javascript:openCreateTaskForm();">
 <input type="button" value="logout" onClick="javascript:logout();">
+</br><p><font color="red">${sucessmsg}</font></p>
 </body>
 </html>
