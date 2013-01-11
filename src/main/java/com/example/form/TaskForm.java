@@ -2,16 +2,22 @@ package com.example.form;
 
 import java.util.Date;
 
-import com.example.model.User;
-
 public class TaskForm {
 	
+	private int id;
 	private String name;
 	private Date createdDate;
 	private Date endDate;
 	private String description;
-	private User createdBy;
+	private String createdBy;
 	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
@@ -36,10 +42,10 @@ public class TaskForm {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public User getCreatedBy() {
+	public String getCreatedBy() {
 		return createdBy;
 	}
-	public void setCreatedBy(User createdBy) {
+	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
 	

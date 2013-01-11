@@ -2,11 +2,11 @@
 <%@ page import="com.example.form.UserForm"%>
 <script type="text/javascript">
 function openViewTasks(){
-	window.open('view','_self',false);
+	window.open('/taskMaster1.1/task/view','_self',false);
 }
 
 function openCreateTaskForm(){
-	window.open('showCreate','_self',false);
+	window.open('/taskMaster1.1/task/showCreate','_self',false);
 }
 
 function logout(){

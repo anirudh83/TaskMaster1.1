@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,14 +34,15 @@ public class UserController {
 	
 	/**
 	 * POST request to create User
-	 * @param model
+	 * @param modell
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.POST)
 	public String createUser(
-			@ModelAttribute("user") UserForm user){
+			@ModelAttribute("user") UserForm user,HttpSession session){
 		User newUser = populateUserFromForm(user);
 		userService.createUser(newUser);
+		session.setAttribute("user", newUser);
 		return "home";
 	}
 	

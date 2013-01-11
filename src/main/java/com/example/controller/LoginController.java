@@ -38,5 +38,14 @@ public class LoginController {
 		}
 		
 	}
+	
+	@RequestMapping(value="/logout",method=RequestMethod.GET)
+	public String logoutUser(HttpSession session){
+		if(session.getAttribute("user")!=null){
+			session.invalidate();
+		}
+		return "index";
+	}
 
+	
 }

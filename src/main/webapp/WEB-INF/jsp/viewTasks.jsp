@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
-<%@ page import="com.example.model.Task" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <script type="text/javascript">
 function backPage(){
-	window.open('home.jsp','_self',false);
+	window.open('home','_self',false);
 }
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -25,7 +24,7 @@ function backPage(){
 ${task.name}
 </td>
 <td>
-${task.createdBy.firstName}
+${task.createdBy}
 </td>
 <td><a href="viewTasks?action=delete&id=${task.id}">delete</a></td>
 </tr>
