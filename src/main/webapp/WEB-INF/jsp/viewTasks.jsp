@@ -19,6 +19,7 @@ function backPage(){
 <h1>All Tasks</h1>
 <table border="1">
 <th>Task</th>
+<th>Description</th>
 <th>Person Name</th>
 <th>Date</th>
 <c:forEach items="${tasks}" var="task">
@@ -27,12 +28,16 @@ function backPage(){
 ${task.name}
 </td>
 <td>
+${task.description}
+</td>
+<td>
 ${task.createdBy}
 </td>
 <td>
 ${task.createdDate}
 </td>
 <td><a href="/TaskMaster/task/delete/${task.id}">Done</a></td>
+<td><a href="/TaskMaster/task/showEdit/${task.id }">Edit</a></td>
 </tr>
 </c:forEach>
 </table>

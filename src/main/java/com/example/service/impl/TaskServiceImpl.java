@@ -55,6 +55,10 @@ public class TaskServiceImpl implements TaskService{
 	public void saveTask(Task task) {
 		taskPersistence.saveTask(task);
 	}
+	@Override
+	public Task getTask(int id) {
+		return taskPersistence.getTask(id);
+	}
 
 	
 }

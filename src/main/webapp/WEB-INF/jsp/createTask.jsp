@@ -8,10 +8,10 @@
 <body>
 <script type="text/javascript">
 function backPage(){
-	window.open('home','_self',false);
+	window.open('/TaskMaster/task/home','_self',false);
 }
 </script>
-<form method="post" action="create" ModelAttribute="task">
+<form method="post" action="/TaskMaster/task/create" ModelAttribute="task">
 <div>
 <ul>
 <li>Enter Task :<form:input path="task.name"/></li>

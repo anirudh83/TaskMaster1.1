@@ -22,7 +22,7 @@ public class TaskPersistenceImpl implements TaskPersistence{
 	public void saveTask(Task task) {
 			Session sess = getSession();
 			Transaction tx = sess.beginTransaction();
-			sess.save(task);
+			sess.saveOrUpdate(task);
 			System.out.println("Successfully data inserted in database");
 			tx.commit();
 			sess.close();
@@ -55,6 +55,12 @@ public class TaskPersistenceImpl implements TaskPersistence{
 		Session sess = getSession();
 		sess.delete(sess.load(Task.class, id));
 		sess.flush();
+	}
+
+	@Override
+	public Task getTask(int id) {
+		Session sess = getSession();
+		return (Task)sess.load(Task.class,id);
 	}
 
 

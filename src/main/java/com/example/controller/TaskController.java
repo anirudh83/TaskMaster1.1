@@ -80,6 +80,15 @@ public class TaskController {
 		   taskService.deleteTask(Integer.parseInt(taskId));
 		   return viewTasks(session,model);
 	  }
+	   
+	   @RequestMapping(value="/showEdit/{taskId}",method=RequestMethod.GET)
+	   public String editTask(@PathVariable String taskId,
+			   HttpSession session,Model model)  {
+		   Task task = taskService.getTask(Integer.parseInt(taskId));
+		   TaskForm taskForm = populateTaskForm(task);
+		   model.addAttribute("task", taskForm);
+			return "createTask";
+	  }
 	
 	
 	/**
