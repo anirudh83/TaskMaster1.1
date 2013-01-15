@@ -7,8 +7,10 @@
 <head>
 <script type="text/javascript">
 function backPage(){
-	window.open('home','_self',false);
+	window.open('/TaskMaster/task/home','_self',false);
 }
+
+
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>View Tasks</title>
@@ -18,6 +20,7 @@ function backPage(){
 <table border="1">
 <th>Task</th>
 <th>Person Name</th>
+<th>Date</th>
 <c:forEach items="${tasks}" var="task">
 <tr>
 <td>
@@ -26,7 +29,10 @@ ${task.name}
 <td>
 ${task.createdBy}
 </td>
-<td><a href="viewTasks?action=delete&id=${task.id}">delete</a></td>
+<td>
+${task.createdDate}
+</td>
+<td><a href="/TaskMaster/task/delete/${task.id}">Done</a></td>
 </tr>
 </c:forEach>
 </table>

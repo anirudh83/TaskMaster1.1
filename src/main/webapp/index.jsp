@@ -2,7 +2,7 @@
 <script type="text/javascript">
 
 function openCreateUserPage(){
-	window.open('/taskMaster1.1/user','_self',false);
+	window.open('user','_self',false);
 }
 </script>
 

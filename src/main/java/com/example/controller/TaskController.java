@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -72,6 +73,15 @@ public class TaskController {
 	public String goHome(){
 		return "home";
 	}
+	
+	   @RequestMapping(value="/delete/{taskId}",method=RequestMethod.GET)
+	   public String deleteTask(@PathVariable String taskId,
+			   HttpSession session,Model model)  {
+		   taskService.deleteTask(Integer.parseInt(taskId));
+		   return viewTasks(session,model);
+	  }
+	
+	
 	/**
 	 * Takes argument of type TaskForm and gives a new Object of Task
 	 * 
@@ -92,6 +102,7 @@ public class TaskController {
 	private TaskForm populateTaskForm(Task task) {
 
 		TaskForm newTask = new TaskForm();
+		newTask.setId(task.getId());
 		newTask.setName(task.getName());
 		newTask.setDescription(task.getDescription());
 		newTask.setCreatedBy(task.getCreatedBy().getFirstName());

@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.example</groupId>
-	<artifactId>TaskMaster1.1</artifactId>
+	<artifactId>TaskMaster</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>TaskMaster1.1 Maven Webapp</name>
+	<name>TaskMaster Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
 	<dependencies>
@@ -92,7 +92,7 @@
 		<!-- spring dependencies end -->
 	</dependencies>
 	<build>
-		<finalName>TaskMaster1.1</finalName>
+		<finalName>TaskMaster</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -101,7 +101,7 @@
 					<username>admin</username>
 					<password>admin</password>
 					<server>myserver</server>
-					<path>/taskMaster1.1</path>
+					<path>/TaskMaster</path>
 				</configuration>
 			</plugin>
 			<plugin>

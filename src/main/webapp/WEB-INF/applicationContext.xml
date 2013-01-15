@@ -45,4 +45,39 @@
 	</bean>
 
 </beans>
+<!-- 
+MySQL 5.1 database added.  Please make note of these credentials:
 
+   Root User: admin
+   Root Password: 5zMfwJ_CFT7D
+   Database Name: TaskMaster
+
+Connection URL: mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/
+
+You can manage your new MySQL database by also embedding phpmyadmin-3.4.
+The phpmyadmin username and password will be the same as the MySQL credentials above.
+//Need to put them into Properties file : Production Data
+<property name="url">
+			<value>jdbc:mysql://127.12.20.129:3306/taskMaster</value>
+		</property>
+		<property name="username">
+			<value>admin</value>
+		</property>
+		<property name="password">
+			<value>5zMfwJ_CFT7D</value>
+		</property>
+
+
+//Local Data :
+
+<property name="url">
+			<value>jdbc:mysql://localhost:3306/taskmaster</value>
+		</property>
+		<property name="username">
+			<value>root</value>
+		</property>
+		<property name="password">
+			<value>root</value>
+		</property>
+
+ -->

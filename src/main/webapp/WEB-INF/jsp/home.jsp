@@ -2,15 +2,15 @@
 <%@ page import="com.example.form.UserForm"%>
 <script type="text/javascript">
 function openViewTasks(){
-	window.open('/taskMaster1.1/task/view','_self',false);
+	window.open('/TaskMaster/task/view','_self',false);
 }
 
 function openCreateTaskForm(){
-	window.open('/taskMaster1.1/task/showCreate','_self',false);
+	window.open('/TaskMaster/task/showCreate','_self',false);
 }
 
 function logout(){
-	window.open('/taskMaster1.1/logout','_self',false);
+	window.open('/TaskMaster/logout','_self',false);
 }
 </script>
 <body>
