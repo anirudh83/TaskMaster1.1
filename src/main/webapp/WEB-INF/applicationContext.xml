@@ -6,20 +6,22 @@
 	<context:component-scan
 		base-package="com.example.persistence,com.example.persistence.impl,com.example.service,com.example.service.impl,com.example.web,com.example.controller" />
 	<context:annotation-config />
+	
+	<bean 
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<property name="location">
+		<!-- <value>/properties/database.local.properties</value> -->
+		 <value>/properties/database.dev.properties</value> 
+	</property>
+   </bean>
+	
+	
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName">
-			<value>com.mysql.jdbc.Driver</value>
-		</property>
-		<property name="url">
-			<value>jdbc:mysql://localhost:3306/taskmaster</value>
-		</property>
-		<property name="username">
-			<value>root</value>
-		</property>
-		<property name="password">
-			<value>root</value>
-		</property>
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
 	</bean>
 
 	<bean id="sessionFactory"

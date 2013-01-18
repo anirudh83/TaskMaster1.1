@@ -1,14 +1,13 @@
 package com.example.service.impl;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.common.CommonUtils;
 import com.example.model.Task;
 import com.example.model.User;
 import com.example.persistence.TaskPersistence;
@@ -26,16 +25,12 @@ public class TaskServiceImpl implements TaskService{
 		Task task = new Task();
 		task.setName(name);
 		task.setDescription(description);
-		task.setCreatedDate(getFormattedDate(date));
+		task.setDate(CommonUtils.getFormattedDate(date));
 		task.setCreatedBy(user);
 		
 		taskPersistence.saveTask(task);
 	}
-	private Date getFormattedDate(String date) throws ParseException {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
-		Date formattedDate = sdf.parse(date);
-		return formattedDate;
-	}
+	
 	public List<Task> getTasksOfTheDay(String date) {
 		// TODO Auto-generated method stub
 		return null;
@@ -58,6 +53,23 @@ public class TaskServiceImpl implements TaskService{
 	@Override
 	public Task getTask(int id) {
 		return taskPersistence.getTask(id);
+	}
+
+	@Override
+	public void updateTask(Task task) {
+		taskPersistence.updateTask(task);
+	}
+
+	@Override
+	public void closeSession() {
+		taskPersistence.closeSession();
+		
+	}
+
+	@Override
+	public Task merge(Task task) {
+		return taskPersistence.merge(task);
+		
 	}
 
 	

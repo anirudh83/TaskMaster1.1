@@ -34,7 +34,7 @@ ${task.description}
 ${task.createdBy}
 </td>
 <td>
-${task.createdDate}
+${task.date}
 </td>
 <td><a href="/TaskMaster/task/delete/${task.id}">Done</a></td>
 <td><a href="/TaskMaster/task/showEdit/${task.id }">Edit</a></td>

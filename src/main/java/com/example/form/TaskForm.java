@@ -1,13 +1,11 @@
 package com.example.form;
 
-import java.util.Date;
 
 public class TaskForm {
 	
 	private int id;
 	private String name;
-	private Date createdDate;
-	private Date endDate;
+	private String date;
 	private String description;
 	private String createdBy;
 	
@@ -24,17 +22,11 @@ public class TaskForm {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Date getCreatedDate() {
-		return createdDate;
+	public String getDate() {
+		return date;
 	}
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-	public Date getEndDate() {
-		return endDate;
-	}
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
+	public void setDate(String date) {
+		this.date = date;
 	}
 	public String getDescription() {
 		return description;

@@ -7,13 +7,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.example.model.User;
 import com.example.persistence.UserPersistence;
 
 @Repository
-@Transactional
 public class UserPersistenceImpl implements UserPersistence{
 	
 	 @Autowired

@@ -19,8 +19,7 @@ public class Task {
 	
 	private int id;
 	private String name;
-	private Date createdDate;
-	private Date endDate;
+	private Date Date;
 	private String description;
 	private User createdBy;
 	
@@ -28,11 +27,10 @@ public class Task {
 		
 	}
 	
-	public Task(int id, String name,Date createdDate,Date endDate,String description,User createdBy){
+	public Task(int id, String name,Date date,String description,User createdBy){
 		this.id=id;
 		this.name=name;
-		this.createdDate=createdDate;
-		this.endDate=endDate;
+		this.Date=date;
 		this.description=description;
 		this.createdBy=createdBy;
 	}
@@ -55,14 +53,6 @@ public class Task {
 		this.name = name;
 	}
 	
-	@Column(name="createdDate")
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-	
 	@Column(name="description")
 	public String getDescription() {
 		return description;
@@ -79,13 +69,12 @@ public class Task {
 		this.createdBy = createdBy;
 	}
 	
-	@Column(name="endDate")
-	public Date getEndDate() {
-		return endDate;
+	@Column(name="date")
+	public Date getDate() {
+		return Date;
 	}
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
-	
 
+	public void setDate(Date date) {
+		Date = date;
+	}
 }

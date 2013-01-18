@@ -15,4 +15,7 @@ public interface TaskService {
 	void deleteTask(int id);
 	void saveTask(Task task);
 	Task getTask(int id);
+	void updateTask(Task task);
+	void closeSession();
+	Task merge(Task task);
 }

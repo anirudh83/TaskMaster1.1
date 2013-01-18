@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.example.common.CommonUtils;
 import com.example.form.TaskForm;
 import com.example.model.Task;
 import com.example.model.User;
@@ -57,14 +59,11 @@ public class TaskController {
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String createTask(@ModelAttribute("task") TaskForm task, Model model,HttpSession session) {
-
+	public String updateTask(@ModelAttribute("task") TaskForm task, Model model,HttpSession session) throws ParseException {
 		User user = (User)session.getAttribute("user");
 		Task newTask = populateTaskFromTaskForm(task,user);
-
-		taskService.saveTask(newTask);
+		taskService.updateTask(newTask);
 		model.addAttribute("sucessmsg", "Task was created Successfully");
-
 		return "home";
 
 	}
@@ -87,7 +86,7 @@ public class TaskController {
 		   Task task = taskService.getTask(Integer.parseInt(taskId));
 		   TaskForm taskForm = populateTaskForm(task);
 		   model.addAttribute("task", taskForm);
-			return "createTask";
+		   return "createTask";
 	  }
 	
 	
@@ -96,16 +95,16 @@ public class TaskController {
 	 * 
 	 * @param task
 	 * @return
+	 * @throws ParseException 
 	 */
-	private Task populateTaskFromTaskForm(TaskForm task,User user) {
-
-		Task newTask = new Task();
-		newTask.setName(task.getName());
-		newTask.setDescription(task.getDescription());
-		newTask.setCreatedBy(user);
-		newTask.setEndDate(task.getEndDate());
-		newTask.setCreatedDate(task.getCreatedDate());
-		return newTask;
+	private Task populateTaskFromTaskForm(TaskForm task,User user) throws ParseException {
+		Task persistedTask = new Task();
+		persistedTask.setId(task.getId());
+		persistedTask.setName(task.getName());
+		persistedTask.setDescription(task.getDescription());
+		persistedTask.setCreatedBy(user);
+		persistedTask.setDate(CommonUtils.getFormattedDate(task.getDate()));
+		return persistedTask;
 	}
 
 	private TaskForm populateTaskForm(Task task) {
@@ -115,8 +114,7 @@ public class TaskController {
 		newTask.setName(task.getName());
 		newTask.setDescription(task.getDescription());
 		newTask.setCreatedBy(task.getCreatedBy().getFirstName());
-		newTask.setEndDate(task.getEndDate());
-		newTask.setCreatedDate(task.getCreatedDate());
+		newTask.setDate(CommonUtils.getFormattedStringFromDate(task.getDate()));
 
 		return newTask;
 	}

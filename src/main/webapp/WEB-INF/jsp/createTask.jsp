@@ -14,9 +14,10 @@ function backPage(){
 <form method="post" action="/TaskMaster/task/create" ModelAttribute="task">
 <div>
 <ul>
+<form:hidden path="task.id"/>
 <li>Enter Task :<form:input path="task.name"/></li>
 <li>Description :<form:input path="task.description"/></li>
-<li>Enter Last Date (dd/mm/yyyy):<form:input path="task.createdDate"/></li>
+<li>Enter Last Date (dd/mm/yyyy):<form:input path="task.date"/></li>
 <li><input type="submit" value="Submit"><input type="button" value="Back" onclick="javascript:backPage()"></li>
 </div>
 </form>

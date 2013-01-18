@@ -7,13 +7,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.example.model.Task;
 import com.example.persistence.TaskPersistence;
 
 @Repository
-@Transactional
 public class TaskPersistenceImpl implements TaskPersistence{
 	
 	 @Autowired
@@ -61,6 +59,25 @@ public class TaskPersistenceImpl implements TaskPersistence{
 	public Task getTask(int id) {
 		Session sess = getSession();
 		return (Task)sess.load(Task.class,id);
+	}
+
+	@Override
+	public void updateTask(Task task) {
+		Session session = getSession();
+		session.saveOrUpdate(task);
+		session.flush();
+	}
+
+	@Override
+	public void closeSession() {
+		getSession().flush();
+		getSession().close();
+	}
+
+	@Override
+	public Task merge(Task task) {
+		return (Task)getSession().merge(task);
+		
 	}
 
 
