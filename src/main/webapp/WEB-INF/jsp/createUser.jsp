@@ -7,8 +7,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Register New User</title>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<link rel="stylesheet" href="<c:url value="css/bootstrap.css"/>"/>
 </head>
 <body>
+<div align="center">
 <form method="post" modelAttribute="user">
 <table>
 <tr><td>First Name :</td><td><form:input path="user.firstName"/></td></tr>
@@ -19,5 +22,6 @@
 <tr><td><input type="submit" value="Submit"></td></tr>
 </table>
 </form>
+</div>
 </body>
 </html>

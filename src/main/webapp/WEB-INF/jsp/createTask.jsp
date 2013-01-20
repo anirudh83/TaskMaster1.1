@@ -2,6 +2,9 @@
 <html>
  <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <head>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<link rel="stylesheet" href="<c:url value="css/bootstrap.css"/>"/>
+<link rel="stylesheet" href="<c:url value="css/style.css"/>"/>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
@@ -12,7 +15,7 @@ function backPage(){
 }
 </script>
 <form method="post" action="/TaskMaster/task/create" ModelAttribute="task">
-<div>
+<div class="content1">
 <ul>
 <form:hidden path="task.id"/>
 <li>Enter Task :<form:input path="task.name"/></li>

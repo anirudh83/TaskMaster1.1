@@ -34,7 +34,7 @@ public class LoginController {
 			return "home";
 		}else{
 			model.addAttribute("error", "Incorrect username or password, Please try again!");
-			return "index";
+			return "login";
 		}
 		
 	}
@@ -44,8 +44,12 @@ public class LoginController {
 		if(session.getAttribute("user")!=null){
 			session.invalidate();
 		}
-		return "index";
+		return "login";
 	}
 
+	@RequestMapping(value="/showlogin",method=RequestMethod.GET)
+	public String showloginPage(){
+		return "login";
+	}
 	
 }
