@@ -62,7 +62,7 @@ public class TaskController {
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public String updateTask(@ModelAttribute("task") TaskForm task,BindingResult bindingResult,Model model,HttpSession session) throws ParseException {
 		User user = (User)session.getAttribute("user");
-		taskValidator.validate(model, bindingResult);
+		taskValidator.validate(task, bindingResult);
 		if(!bindingResult.hasErrors()){
 			Task newTask = populateTaskFromTaskForm(task,user);
 			taskService.updateTask(newTask);

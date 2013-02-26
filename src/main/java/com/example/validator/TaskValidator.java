@@ -5,6 +5,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+import com.example.common.CommonUtils;
 import com.example.form.TaskForm;
 
 /**
@@ -23,9 +24,18 @@ public class TaskValidator implements Validator{
 
 	@Override
 	public void validate(Object model, Errors errors) {
-		ValidationUtils.rejectIfEmpty(errors, "name", "name.cannot.empty");
+		TaskForm task = (TaskForm)model;
+
 		ValidationUtils.rejectIfEmpty(errors, "date", "date.cannot.empty");
+		ValidationUtils.rejectIfEmpty(errors, "name", "name.cannot.empty");
 		ValidationUtils.rejectIfEmpty(errors, "description", "description.cannot.empty");
+		if(!errors.hasFieldErrors("date")){
+			try{
+				CommonUtils.getFormattedDate(task.getDate());
+			}catch(Exception e){
+				errors.rejectValue("date", "date.format.invalid");
+			}
+		}
 	}
 
 }
