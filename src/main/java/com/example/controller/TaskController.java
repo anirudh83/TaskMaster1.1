@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,7 @@ import com.example.form.TaskForm;
 import com.example.model.Task;
 import com.example.model.User;
 import com.example.service.TaskService;
-import com.example.service.UserService;
+import com.example.validator.TaskValidator;
 
 /**
  * 
@@ -34,7 +35,7 @@ public class TaskController {
 	@Autowired
 	private TaskService taskService;
 	@Autowired
-	private UserService userService;
+	private TaskValidator taskValidator;
 
 	@RequestMapping(value = "/view", method = RequestMethod.GET)
 	public String viewTasks(HttpSession session,
@@ -59,12 +60,17 @@ public class TaskController {
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String updateTask(@ModelAttribute("task") TaskForm task, Model model,HttpSession session) throws ParseException {
+	public String updateTask(@ModelAttribute("task") TaskForm task,BindingResult bindingResult,Model model,HttpSession session) throws ParseException {
 		User user = (User)session.getAttribute("user");
-		Task newTask = populateTaskFromTaskForm(task,user);
-		taskService.updateTask(newTask);
-		model.addAttribute("sucessmsg", "Task was created Successfully");
-		return "home";
+		taskValidator.validate(model, bindingResult);
+		if(!bindingResult.hasErrors()){
+			Task newTask = populateTaskFromTaskForm(task,user);
+			taskService.updateTask(newTask);
+			model.addAttribute("sucessmsg", "Task was created Successfully");
+		}else{
+			model.addAttribute("sucessmsg", "Task was Not updated!");
+		}
+		return "createTask";
 
 	}
 

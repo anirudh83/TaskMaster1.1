@@ -18,9 +18,9 @@ function backPage(){
 <div class="content1">
 <ul>
 <form:hidden path="task.id"/>
-<li>Enter Task :<form:input path="task.name"/></li>
-<li>Description :<form:input path="task.description"/></li>
-<li>Enter Last Date (dd/mm/yyyy):<form:input path="task.date"/></li>
+<li><label for="task.name">Enter Task : </label><form:input path="task.name"/><p><font color="red"><form:errors path="task.name"/></font></p></li>
+<li><label for="task.description">Description :</label><form:input path="task.description"/><p><font color="red"><form:errors path="task.description"/></font></p></li>
+<li><label for="task.date">Enter Last Date (dd/mm/yyyy):</label><form:input path="task.date"/><p><font color="red"><form:errors path="task.date"/></font></p></li>
 <li><input type="submit" value="Submit"><input type="button" value="Back" onclick="javascript:backPage()"></li>
 </div>
 </form>
