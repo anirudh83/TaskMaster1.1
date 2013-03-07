@@ -44,7 +44,7 @@ function openCreateUserPage(){
 
     <!-- Le styles -->
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link rel="stylesheet" href="<c:url value="css/bootstrap.css"/>"/>
+<link rel="stylesheet" href="<c:url value="/css/bootstrap.css"/>"/>
     <style type="text/css">
       body {
         padding-top: 60px;

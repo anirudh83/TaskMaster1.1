@@ -59,6 +59,16 @@ public class TaskController {
 		return "createTask";
 	}
 
+	/**
+	 * method to update/create Task
+	 * TODO :Find out why ? * Model has to be preceding Binding Result **
+	 * @param task
+	 * @param bindingResult
+	 * @param model
+	 * @param session
+	 * @return
+	 * @throws ParseException
+	 */
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public String updateTask(@ModelAttribute("task") TaskForm task,BindingResult bindingResult,Model model,HttpSession session) throws ParseException {
 		User user = (User)session.getAttribute("user");
@@ -69,8 +79,9 @@ public class TaskController {
 			model.addAttribute("sucessmsg", "Task was created Successfully");
 		}else{
 			model.addAttribute("sucessmsg", "Task was Not updated!");
+			return "createTask";
 		}
-		return "createTask";
+		return "home";
 
 	}
 

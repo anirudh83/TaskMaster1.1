@@ -3,8 +3,11 @@
  <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <head>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link rel="stylesheet" href="<c:url value="css/bootstrap.css"/>"/>
-<link rel="stylesheet" href="<c:url value="css/style.css"/>"/>
+<link rel="stylesheet" href="<c:url value="/css/bootstrap.css"/>"/>
+<link rel="stylesheet" href="<c:url value="/css/datepicker.css"/>"/>
+<link rel="stylesheet" href="<c:url value="/css/style.css"/>"/>
+<script type="text/javascript" src="<c:url value="/js/jquery-1.9.1.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/bootstrap-datepicker.js"/>"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
@@ -13,16 +16,26 @@
 function backPage(){
 	window.open('/TaskMaster/task/home','_self',false);
 }
+    
+jQuery(function()
+{
+	jQuery('.datepicker').datepicker();
+});
 </script>
-<form method="post" action="/TaskMaster/task/create" ModelAttribute="task">
-<div class="content1">
-<ul>
-<form:hidden path="task.id"/>
-<li><label for="task.name">Enter Task : </label><form:input path="task.name"/><p><font color="red"><form:errors path="task.name"/></font></p></li>
-<li><label for="task.description">Description :</label><form:input path="task.description"/><p><font color="red"><form:errors path="task.description"/></font></p></li>
-<li><label for="task.date">Enter Last Date (dd/mm/yyyy):</label><form:input path="task.date"/><p><font color="red"><form:errors path="task.date"/></font></p></li>
-<li><input type="submit" value="Submit"><input type="button" value="Back" onclick="javascript:backPage()"></li>
-</div>
-</form>
+<form:form method="post" action="/TaskMaster/task/create" commandName="task">
+<table>
+
+<form:hidden path="id"/>
+<tr><td>Enter Task :<form:input path="name" required="true"/>
+<form:errors class="text-error" path="name" /></td></tr>
+<tr><td>Description :<form:input path="description" required="true"/>
+<form:errors class="text-error" path="description"/></td></tr>
+<tr><td>Enter Last Date (dd/mm/yyyy):
+<form:input path="date" class="datepicker" data-date-format="dd/mm/yyyy" type="text" required="true"/>
+<form:errors class="text-error" path="date" /></td></tr>
+<tr><td><input type="submit" value="Submit">
+<input type="button" value="Back" onclick="javascript:backPage()"></td></tr>
+</table>
+</form:form>
 </body>
 </html>
