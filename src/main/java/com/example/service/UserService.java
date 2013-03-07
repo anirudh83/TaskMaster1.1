@@ -2,7 +2,6 @@ package com.example.service;
 
 import java.util.Set;
 
-import com.example.form.UserForm;
 import com.example.model.User;
 
 public interface UserService {

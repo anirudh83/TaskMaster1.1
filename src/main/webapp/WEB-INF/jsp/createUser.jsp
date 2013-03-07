@@ -14,11 +14,11 @@
 <div align="center">
 <form method="post" modelAttribute="user">
 <table>
-<tr><td>First Name :</td><td><form:input path="user.firstName"/></td></tr>
-<tr><td>Last Name :</td><td><form:input path="user.lastName"/></td></tr>
-<tr><td>Email Address(will be used as userName to login) :</td><td><form:input path="user.email"/></td></tr>
-<tr><td>Password :</td><td><form:input path="user.password"/></td></tr>
-<tr><td>Mobile Number : </td><td><form:input path="user.mobileNum"/></td></tr>
+<tr><td>First Name :</td><td><form:input path="user.firstName"/><form:errors path="user.firstName"/></td></tr>
+<tr><td>Last Name :</td><td><form:input path="user.lastName"/><form:errors path="user.lastName"/></td></tr>
+<tr><td>Email Address(will be used as userName to login) :</td><td><form:input path="user.email" type="email"/><form:errors path="user.email"/></td></tr>
+<tr><td>Password :</td><td><form:input path="user.password" type="password"/><form:errors path="user.password"/></td></tr>
+<tr><td>Mobile Number : </td><td><form:input path="user.mobileNum" /><form:errors path="user.mobileNum"/></td></tr>
 <tr><td><input type="submit" value="Submit"></td></tr>
 </table>
 </form>
