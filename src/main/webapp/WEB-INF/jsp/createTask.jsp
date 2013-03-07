@@ -31,7 +31,7 @@ jQuery(function()
 <tr><td>Description :<form:input path="description" required="true"/>
 <form:errors class="text-error" path="description"/></td></tr>
 <tr><td>Enter Last Date (dd/mm/yyyy):
-<form:input path="date" class="datepicker" data-date-format="dd/mm/yyyy" type="text" required="true"/>
+<form:input path="date" class="datepicker" data-date-format="dd/mm/yyyy" readonly="true" type="text" required="true"/>
 <form:errors class="text-error" path="date" /></td></tr>
 <tr><td><input type="submit" value="Submit">
 <input type="button" value="Back" onclick="javascript:backPage()"></td></tr>
