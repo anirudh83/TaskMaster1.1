@@ -1,0 +1,12 @@
+Product Backlog
+
+Task Master Bugs:
+1.) Should not be able to put task in back date.
+2.) If no tasks, it should say so.
+
+
+Enhancements:
+
+1.)As a User I want to view my history of last 30 days so I can track my old tasks.
+2.)As a User I want to set repettive tasks so that I dont have to put them again.
+3.)As a User I should be able to add tasks from view task page so that I dont have to go back to home page for creating tasks.

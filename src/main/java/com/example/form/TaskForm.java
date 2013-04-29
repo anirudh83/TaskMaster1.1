@@ -1,5 +1,7 @@
 package com.example.form;
 
+import java.util.List;
+
 
 public class TaskForm {
 	
@@ -8,6 +10,7 @@ public class TaskForm {
 	private String date;
 	private String description;
 	private String createdBy;
+	private List<String> dropDown;
 	
 	
 	public int getId() {
@@ -39,6 +42,12 @@ public class TaskForm {
 	}
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
+	}
+	public List<String> getDropDown() {
+		return dropDown;
+	}
+	public void setDropDown(List<String> dropDown) {
+		this.dropDown = dropDown;
 	}
 	
 }

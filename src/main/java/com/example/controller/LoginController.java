@@ -44,7 +44,7 @@ public class LoginController {
 		if(session.getAttribute("user")!=null){
 			session.invalidate();
 		}
-		return "login";
+		return "index";
 	}
 
 	@RequestMapping(value="/showlogin",method=RequestMethod.GET)

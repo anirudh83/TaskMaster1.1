@@ -14,7 +14,11 @@
 <body>
 <script type="text/javascript">
 function backPage(){
-	window.open('/TaskMaster/task/home','_self',false);
+	if('${fromPage}'=='view'){
+		window.open('/TaskMaster/task/view','_self',false);
+	}else{
+	 window.open('/TaskMaster/task/home','_self',false);
+	}
 }
     
 jQuery(function()
@@ -22,7 +26,7 @@ jQuery(function()
 	jQuery('.datepicker').datepicker();
 });
 </script>
-<form:form method="post" action="/TaskMaster/task/create" commandName="task">
+<form:form method="post" action="/TaskMaster/task/create?fromPage=${fromPage}" commandName="task">
 <table>
 
 <form:hidden path="id"/>

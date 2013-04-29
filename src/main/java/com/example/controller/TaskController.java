@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.common.CommonUtils;
 import com.example.form.TaskForm;
@@ -53,9 +54,11 @@ public class TaskController {
 	}
 
 	@RequestMapping(value = "/showCreate", method = RequestMethod.GET)
-	public String showCreateTask(Model model) {
+	public String showCreateTask(Model model,
+			@RequestParam(value="from", required=false) String fromPage){
 		TaskForm taskForm = new TaskForm();
 		model.addAttribute("task", taskForm);
+		model.addAttribute("fromPage", fromPage);
 		return "createTask";
 	}
 
@@ -70,7 +73,9 @@ public class TaskController {
 	 * @throws ParseException
 	 */
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String updateTask(@ModelAttribute("task") TaskForm task,BindingResult bindingResult,Model model,HttpSession session) throws ParseException {
+	public String updateTask(@ModelAttribute("task") TaskForm task,BindingResult bindingResult,
+			Model model,HttpSession session,
+			@RequestParam(value="fromPage",required=false)String fromPage) throws ParseException {
 		User user = (User)session.getAttribute("user");
 		taskValidator.validate(task, bindingResult);
 		if(!bindingResult.hasErrors()){
@@ -80,6 +85,9 @@ public class TaskController {
 		}else{
 			model.addAttribute("sucessmsg", "Task was Not updated!");
 			return "createTask";
+		}
+		if(("view").equalsIgnoreCase(fromPage.toString())){
+			return viewTasks(session,model);
 		}
 		return "home";
 
@@ -105,8 +113,8 @@ public class TaskController {
 		   model.addAttribute("task", taskForm);
 		   return "createTask";
 	  }
-	
-	
+
+	   
 	/**
 	 * Takes argument of type TaskForm and gives a new Object of Task
 	 * 
