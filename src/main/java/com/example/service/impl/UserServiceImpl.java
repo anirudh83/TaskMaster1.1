@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public User getUserById(long id) {
+	public User getUserById(int id) {
 		return userPersistence.getUser(id);
 	}
 

@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.form.UserForm;
 import com.example.model.User;
@@ -68,5 +70,37 @@ public class UserController {
 		newUser.setEmail(user.getEmail());
 		return newUser;
 	}
+	
+	private UserForm transform(User user){
+		UserForm newUser = new UserForm();
+		newUser.setFirstName(user.getFirstName());
+		newUser.setLastName(user.getLastName());
+		newUser.setEmail(user.getEmail());
+		newUser.setPassword(user.getPassword());
+		newUser.setEmail(user.getEmail());
+		return newUser;
+	}
+	
+	/**
+	 * Returns JSON data
+	 * @param id
+	 * @return
+	 */
 
+	@RequestMapping(value="/json/{id}" , method =RequestMethod.GET )
+    @ResponseBody
+	public UserForm getUserInJSon(@PathVariable String id){
+		User userById = userService.getUserById(Integer.valueOf(id));
+		if(userById!=null){
+			System.out.println("there is result");
+			return transform(userById);
+		}else{
+			System.out.println("empty");
+			return new UserForm();
+			
+		}
+		 
+	}
+	
+	
 }

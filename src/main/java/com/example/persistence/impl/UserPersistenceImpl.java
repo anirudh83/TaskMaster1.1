@@ -39,7 +39,7 @@ public class UserPersistenceImpl implements UserPersistence{
 	}
 
 	@Override
-	public User getUser(long id) {
+	public User getUser(int id) {
 		Session sess = getSession();
 		return (User) sess.get(User.class, id);
 	}

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.common.CommonUtils;
 import com.example.form.TaskForm;
@@ -98,11 +99,12 @@ public class TaskController {
 		return "home";
 	}
 	
-	   @RequestMapping(value="/delete/{taskId}",method=RequestMethod.GET)
+	   @RequestMapping(value="/{taskId}",method=RequestMethod.DELETE)
+	   @ResponseBody
 	   public String deleteTask(@PathVariable String taskId,
 			   HttpSession session,Model model)  {
 		   taskService.deleteTask(Integer.parseInt(taskId));
-		   return viewTasks(session,model);
+		   return "successfully deleted";
 	  }
 	   
 	   @RequestMapping(value="/showEdit/{taskId}",method=RequestMethod.GET)

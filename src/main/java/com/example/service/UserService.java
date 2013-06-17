@@ -7,7 +7,7 @@ import com.example.model.User;
 public interface UserService {
 	
 	Set<User> getUsers();
-	User getUserById(long id);
+	User getUserById(int id);
 	User getUserByEmail(String emailAddress);
 	User createUser(User newUser);
 

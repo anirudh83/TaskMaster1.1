@@ -8,7 +8,7 @@ public interface UserPersistence {
 	
 	User saveUser(User user);
 	Set<User> getUsers();
-	User getUser(long id);
+	User getUser(int id);
 	User getUserByEmail(String email);
 
 }
