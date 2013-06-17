@@ -23,7 +23,6 @@ function openCreateTaskForm(){
 			url : "/TaskMaster/task/"+id,
 			success : function(response) {
 				// we have the response
-				alert(response);
 				var rowId = 'row'+id;
 				jQuery('#'+rowId).remove();
 				$('#info').html(response);

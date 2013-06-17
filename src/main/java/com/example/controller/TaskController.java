@@ -104,7 +104,7 @@ public class TaskController {
 	   public String deleteTask(@PathVariable String taskId,
 			   HttpSession session,Model model)  {
 		   taskService.deleteTask(Integer.parseInt(taskId));
-		   return "successfully deleted";
+		   return "successfully completed";
 	  }
 	   
 	   @RequestMapping(value="/showEdit/{taskId}",method=RequestMethod.GET)
