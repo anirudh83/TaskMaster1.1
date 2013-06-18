@@ -18,6 +18,10 @@ function openCreateTaskForm(){
 function logout(){
 	window.open('/TaskMaster/logout','_self',false);
 }
+
+function openTodaysTasks(){
+	window.open('/TaskMaster/task/view/todaystasks','_self',false);
+}
 </script>
     <form class="bs-docs-example form-inline">
     <fieldset>
@@ -25,7 +29,8 @@ function logout(){
     <span class="help-block">Make your task or view your tasks</span>
    
  
-<input type="button" class="btn btn-primary btn-large" value="my Tasks" onclick="javascript:openViewTasks()">
+<input type="button" class="btn btn-primary btn-large" value="all Tasks" onclick="javascript:openViewTasks()">
+<input type="button" class="btn btn-primary btn-large" value="todays Tasks" onclick="javascript:openTodaysTasks()">
 <input type="button" class="btn btn-success btn-large"  value="create Task" onclick="javascript:openCreateTaskForm();">
 <input type="button" class="btn btn-danger btn-large" value="logout" onClick="javascript:logout();">
 <br><p><font color="red">${sucessmsg}</font></p>

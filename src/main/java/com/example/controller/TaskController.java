@@ -2,6 +2,7 @@ package com.example.controller;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -52,6 +53,25 @@ public class TaskController {
 		model.addAttribute("tasks", taskFormList);
 		return "viewTasks";
 
+	}
+	
+	@RequestMapping(value ="/view/todaystasks", method = RequestMethod.GET)
+	public String viewTodaysTasks(HttpSession session,
+			Model model) throws ParseException{
+		Date today = new Date();
+	
+		User user = (User)session.getAttribute("user");
+		List<Task> tasks = taskService.getAllTasks(user.getEmail());
+		List<TaskForm> taskFormList = new ArrayList<TaskForm>();
+		
+		for (Task task : tasks) {
+			if(CommonUtils.isDateSame(today, task.getDate())==0){
+				taskFormList.add(populateTaskForm(task));
+			}
+		}
+		model.addAttribute("tasks", taskFormList);
+		return "viewTasks";
+		
 	}
 
 	@RequestMapping(value = "/showCreate", method = RequestMethod.GET)
@@ -130,7 +150,7 @@ public class TaskController {
 		persistedTask.setName(task.getName());
 		persistedTask.setDescription(task.getDescription());
 		persistedTask.setCreatedBy(user);
-		persistedTask.setDate(CommonUtils.getFormattedDate(task.getDate()));
+		persistedTask.setDate(CommonUtils.getFormattedDateWithoutTime(task.getDate()));
 		return persistedTask;
 	}
 
