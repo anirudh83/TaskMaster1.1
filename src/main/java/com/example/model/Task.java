@@ -19,7 +19,7 @@ public class Task {
 	
 	private int id;
 	private String name;
-	private Date Date;
+	private Date date;
 	private String description;
 	private User createdBy;
 	
@@ -30,7 +30,7 @@ public class Task {
 	public Task(int id, String name,Date date,String description,User createdBy){
 		this.id=id;
 		this.name=name;
-		this.Date=date;
+		this.date=date;
 		this.description=description;
 		this.createdBy=createdBy;
 	}
@@ -71,10 +71,10 @@ public class Task {
 	
 	@Column(name="date")
 	public Date getDate() {
-		return Date;
+		return date;
 	}
 
 	public void setDate(Date date) {
-		Date = date;
+		this.date = date;
 	}
 }

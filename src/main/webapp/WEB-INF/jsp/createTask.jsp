@@ -9,7 +9,7 @@
 <script type="text/javascript" src="<c:url value="/js/jquery-1.9.1.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/bootstrap-datepicker.js"/>"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Create Task</title>
 </head>
 <body>
 <script type="text/javascript">
@@ -37,8 +37,8 @@ jQuery(function()
 <tr><td>Enter Last Date (dd/mm/yyyy):
 <form:input path="date" class="datepicker" data-date-format="dd/mm/yyyy" readonly="true" type="text" required="true"/>
 <form:errors class="text-error" path="date" /></td></tr>
-<tr><td><input type="submit" value="Submit">
-<input type="button" value="Back" onclick="javascript:backPage()"></td></tr>
+<tr><td><input type="submit" class="btn btn-success btn-small" value="Submit">
+<input type="button" class="btn btn-success btn-small" value="Back" onclick="javascript:backPage()"></td></tr>
 </table>
 </form:form>
 </body>

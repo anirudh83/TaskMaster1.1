@@ -10,5 +10,7 @@ public interface UserPersistence {
 	Set<User> getUsers();
 	User getUser(int id);
 	User getUserByEmail(String email);
+	void refreshUser(User user);
+	User loadUser(int id);
 
 }

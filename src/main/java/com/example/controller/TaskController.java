@@ -73,6 +73,13 @@ public class TaskController {
 		return "viewTasks";
 		
 	}
+	
+	
+	@RequestMapping(value="/view/exeriseschedule", method =RequestMethod.GET)
+	public String viewExercieSchedule(){
+		return "exerciseSchedule";
+		
+	}
 
 	@RequestMapping(value = "/showCreate", method = RequestMethod.GET)
 	public String showCreateTask(Model model,

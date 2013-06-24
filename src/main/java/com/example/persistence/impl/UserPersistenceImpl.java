@@ -43,6 +43,12 @@ public class UserPersistenceImpl implements UserPersistence{
 		Session sess = getSession();
 		return (User) sess.get(User.class, id);
 	}
+	
+	@Override
+	public User loadUser(int id){
+		Session sess = getSession();
+		return (User) sess.load(User.class, id);
+	}
 
 	@Override
 	public User getUserByEmail(String email) {
@@ -51,6 +57,13 @@ public class UserPersistenceImpl implements UserPersistence{
 			    "from User as user where user.email = ?")
 			    .setString(0, email).uniqueResult();
 		return user;
+	}
+
+	@Override
+	public void refreshUser(User user) {
+		Session sess = getSession();
+		sess.evict(user);
+		sess.refresh(user);
 	}
 
 }

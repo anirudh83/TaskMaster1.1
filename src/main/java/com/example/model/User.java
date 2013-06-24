@@ -28,6 +28,7 @@ public class User {
 	private String mobileNum;
 	private String password;
 	private Set<Task> tasks = new HashSet<Task>(0);
+	private Set<Meal> meals = new HashSet<Meal>(0);
 
 	public User() {
 
@@ -104,4 +105,14 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "createdBy", cascade = CascadeType.ALL)
+	public Set<Meal> getMeals() {
+		return meals;
+	}
+
+	public void setMeals(Set<Meal> meals) {
+		this.meals = meals;
+	}
+	
 }
