@@ -40,7 +40,7 @@ function openExerciseScheduleForm(){
 <input type="button" class="btn btn-primary btn-large" value="all Tasks" onclick="javascript:openViewTasks()">
 <input type="button" class="btn btn-primary btn-large" value="todays Tasks" onclick="javascript:openTodaysTasks()">
 <input type="button" class="btn btn-success btn-large"  value="create Task" onclick="javascript:openCreateTaskForm();">
-<input type="button" class="btn btn-success btn-large"  value="Todays Eating Schedule" onclick="javascript:openEatingScheduleForm();">
+<input type="button" class="btn btn-success btn-large"  value="Eating Schedule" onclick="javascript:openEatingScheduleForm();">
 <input type="button" class="btn btn-success btn-large"  value="Todays Exercise Schedule" onclick="javascript:openExerciseScheduleForm();">
 
 <input type="button" class="btn btn-danger btn-large" value="logout" onClick="javascript:logout();">

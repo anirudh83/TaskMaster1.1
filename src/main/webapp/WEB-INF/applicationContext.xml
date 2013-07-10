@@ -19,8 +19,8 @@
 	<bean 
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 	<property name="location">
-		 <value>/properties/database.local.properties</value> 
-		 <!-- <value>/properties/database.dev.properties</value> --> 
+		<!--  <value>/properties/database.local.properties</value> -->
+		   <value>/properties/database.dev.properties</value> 
 	</property>
    </bean>
 	

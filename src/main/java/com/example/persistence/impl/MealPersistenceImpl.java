@@ -23,6 +23,7 @@ public class MealPersistenceImpl implements MealPersistence{
 	public Meal createMeal(Meal meal) {
 		Session sess = getSession();
 		sess.save(meal);
+		sess.flush();
 		sess.close();
 		return meal;
 	}

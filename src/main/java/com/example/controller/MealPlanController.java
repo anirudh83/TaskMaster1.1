@@ -1,7 +1,6 @@
 package com.example.controller;
 
 import java.text.ParseException;
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.servlet.http.HttpSession;
@@ -40,7 +39,8 @@ public class MealPlanController {
 	@RequestMapping(value="/view/eatingschedule", method =RequestMethod.GET)
 	public String viewEatingSchedule(Model model,HttpSession session){
 		User user = (User)session.getAttribute("user");
-		Set<Meal> meals = user.getMeals();
+		User userFromHibernateSession = userPersistence.loadUser(user.getId());
+		Set<Meal> meals = userFromHibernateSession.getMeals();
 		model.addAttribute("meals", meals);
 		return "eatingSchedule";
 	}
