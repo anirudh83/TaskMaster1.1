@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<link rel="stylesheet" href="<c:url value="/css/bootstrap.css"/>"/>
+<link href="<c:url value="css/bootstrap-responsive.css"/>" rel="stylesheet">
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -42,15 +44,18 @@ function openCreateTaskForm(){
 <h1>All Tasks</h1>
  <c:set var="numOfTasks" value="${fn:length(tasks)}"/>
 <c:choose>
-<c:when test="{numOfTasks = 0}">
+<c:when test="${numOfTasks == 0}">
 No Tasks pending!! Enjoy buddy! PAARRRRTTYYYYY~~~!!
 </c:when>
 <c:otherwise>
-<table border="1">
+<div class="container-fluid">
+	<table class="table table-striped">
 <th>Task</th>
 <th>Description</th>
 <th>Person Name</th>
 <th>Date</th>
+<th>&nbsp</th>
+<th>&nbsp</th>
 <c:forEach items="${tasks}" var="task">
 <tr id="row${task.id}">
 <td>
@@ -65,16 +70,17 @@ ${task.createdBy}
 <td>
 ${task.date}
 </td>
-<td><a href=javascript:deleteTask(${task.id})>Done</a></td>
-<td><a href="/TaskMaster/task/showEdit/${task.id }">Edit</a></td>
+<td><a href=javascript:deleteTask(${task.id}) class="btn btn-success btn-small">Done</a></td>
+<td><a href="/TaskMaster/task/showEdit/${task.id }" class="btn btn-primary">Edit</a></td>
 </tr>
 </c:forEach>
 </c:otherwise>
 </c:choose>
 </table>
+</div>
 <br><p id="info"><font color="red">${sucessmsg}</font></p>
 <br>
-<input type="button" value="Back" onclick="javascript:backPage()">
-<input type="button" value="Create Task" onclick="javascript:openCreateTaskForm()">
+<input type="button" class="btn btn-success btn-small" value="Back" onclick="javascript:backPage()">
+<input type="button" class="btn btn-success btn-small" value="Create Task" onclick="javascript:openCreateTaskForm()">
 </body>
 </html>

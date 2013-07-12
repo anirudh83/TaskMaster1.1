@@ -27,7 +27,8 @@ jQuery(function()
 });
 </script>
 <form:form method="post" action="/TaskMaster/task/create?fromPage=${fromPage}" commandName="task">
-<table>
+<div class="container-fluid">
+	<table class="table">
 
 <form:hidden path="id"/>
 <tr><td>Enter Task :<form:input path="name" required="true"/>
@@ -37,9 +38,16 @@ jQuery(function()
 <tr><td>Enter Last Date (dd/mm/yyyy):
 <form:input path="date" class="datepicker" data-date-format="dd/mm/yyyy" readonly="true" type="text" required="true"/>
 <form:errors class="text-error" path="date" /></td></tr>
+<tr><td>Assign Task to :<select name="userId">
+<option value="0">Select User</option>
+<c:forEach items="${users}" var="user"> 
+<option value="${user.id}">${user.firstName}</option>
+</c:forEach>
+</select></tr>
 <tr><td><input type="submit" class="btn btn-success btn-small" value="Submit">
 <input type="button" class="btn btn-success btn-small" value="Back" onclick="javascript:backPage()"></td></tr>
 </table>
+</div>
 </form:form>
 </body>
 </html>

@@ -1,6 +1,6 @@
 package com.example.service.impl;
 
-import java.util.Set;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,9 +19,8 @@ public class UserServiceImpl implements UserService{
 	private UserPersistence userPersistence;
 	
 	@Override
-	public Set<User> getUsers() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<User> getUsers() {
+		return userPersistence.getAllUsers();
 	}
 
 	@Override

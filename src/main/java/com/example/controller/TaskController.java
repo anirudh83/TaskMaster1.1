@@ -23,6 +23,7 @@ import com.example.form.TaskForm;
 import com.example.model.Task;
 import com.example.model.User;
 import com.example.service.TaskService;
+import com.example.service.UserService;
 import com.example.validator.TaskValidator;
 
 /**
@@ -39,6 +40,8 @@ public class TaskController {
 	private TaskService taskService;
 	@Autowired
 	private TaskValidator taskValidator;
+	@Autowired
+	private UserService userService;
 
 	@RequestMapping(value = "/view", method = RequestMethod.GET)
 	public String viewTasks(HttpSession session,
@@ -103,8 +106,15 @@ public class TaskController {
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public String updateTask(@ModelAttribute("task") TaskForm task,BindingResult bindingResult,
 			Model model,HttpSession session,
-			@RequestParam(value="fromPage",required=false)String fromPage) throws ParseException {
-		User user = (User)session.getAttribute("user");
+			@RequestParam(value="fromPage",required=false)String fromPage,
+			@RequestParam(value="userId",required=false)String userId) throws ParseException {
+		int userIdInt = Integer.valueOf(userId);
+		User user = null;
+		if(userIdInt==0){
+			user = (User)session.getAttribute("user");
+		}else {
+		    user = userService.getUserById(userIdInt);
+		}
 		taskValidator.validate(task, bindingResult);
 		if(!bindingResult.hasErrors()){
 			Task newTask = populateTaskFromTaskForm(task,user);
@@ -143,6 +153,11 @@ public class TaskController {
 		   return "createTask";
 	  }
 
+	   @ModelAttribute
+	   public void populateUsers(Model model){
+		   List<User> users = userService.getUsers();
+		   model.addAttribute("users", users);
+	   }
 	   
 	/**
 	 * Takes argument of type TaskForm and gives a new Object of Task

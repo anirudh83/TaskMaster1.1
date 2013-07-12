@@ -1,7 +1,8 @@
 package com.example.persistence.impl;
 
-import java.util.Set;
+import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -32,10 +33,10 @@ public class UserPersistenceImpl implements UserPersistence{
 		return sess;
 	}
 
-	@Override
-	public Set<User> getUsers() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<User> getAllUsers() {
+	    Query q = getSession().createQuery("from User");
+	    List<User> allUsers = (List<User>) q.list();
+	    return allUsers;
 	}
 
 	@Override
