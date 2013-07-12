@@ -2,12 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link rel="stylesheet" href="<c:url value="/css/bootstrap.css"/>"/>
-<link href="<c:url value="css/bootstrap-responsive.css"/>" rel="stylesheet">
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" href="<c:url value="/css/bootstrap.css"/>"/>
+<link rel="stylesheet" href="<c:url value="/css/bootstrap-responsive.css"/>" >
+<link rel="stylesheet" href="<c:url value="/css/style.css"/>" >
 <script type="text/javascript" src="<c:url value="/js/jquery-1.9.1.min.js"/>"></script>
 <script type="text/javascript">
 function backPage(){
@@ -36,6 +37,19 @@ function openCreateTaskForm(){
 	}
 
 
+	function markAsDone(id) {
+		jQuery.ajax({
+			type : "PUT",
+			url : "/TaskMaster/task/"+id,
+			success : function(response){
+				var rowId = 'row'+id;
+				jQuery('#'+rowId).find("img").attr('src','<c:url value="/img/tick.jpg"/>')
+			},
+			error : function(e){
+                  alert('Error : '+e);				
+			}
+		});
+	}
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>View Tasks</title>
@@ -54,6 +68,7 @@ No Tasks pending!! Enjoy buddy! PAARRRRTTYYYYY~~~!!
 <th>Description</th>
 <th>Person Name</th>
 <th>Date</th>
+<th>Done</th>
 <th>&nbsp</th>
 <th>&nbsp</th>
 <c:forEach items="${tasks}" var="task">
@@ -70,8 +85,9 @@ ${task.createdBy}
 <td>
 ${task.date}
 </td>
-<td><a href=javascript:deleteTask(${task.id}) class="btn btn-success btn-small">Done</a></td>
+<td><a href="javascript:markAsDone(${task.id})"><img src="<c:url value="/img/check_blank.png"/>" height="32" width="32" alt="done"></a></td>
 <td><a href="/TaskMaster/task/showEdit/${task.id }" class="btn btn-primary">Edit</a></td>
+<td><a href=javascript:deleteTask(${task.id}) class="btn btn-danger">Delete</a></td>
 </tr>
 </c:forEach>
 </c:otherwise>

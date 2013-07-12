@@ -5,3 +5,13 @@
   margin-right:auto;
   border:2px solid #000066;   position:relative; 
   }
+
+  a.custom-done{
+  background-image: url("<c:url value="img/tick.jpg"/>"); 
+  background-repeat: no-repeat; 
+  background-position: left top; 
+  padding-top:68px; 
+  margin-bottom:50px;
+  height="32"; 
+  width="32";
+  }

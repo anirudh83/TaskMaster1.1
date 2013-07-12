@@ -39,7 +39,7 @@ jQuery(function()
 <form:input path="date" class="datepicker" data-date-format="dd/mm/yyyy" readonly="true" type="text" required="true"/>
 <form:errors class="text-error" path="date" /></td></tr>
 <tr><td>Assign Task to :<select name="userId">
-<option value="0">Select User</option>
+<option value="0">Self</option>
 <c:forEach items="${users}" var="user"> 
 <option value="${user.id}">${user.firstName}</option>
 </c:forEach>

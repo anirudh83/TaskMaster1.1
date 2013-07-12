@@ -153,6 +153,13 @@ public class TaskController {
 		   return "createTask";
 	  }
 
+	   @RequestMapping(value="/{taskId}", method=RequestMethod.PUT)
+	   @ResponseBody
+	   public String markAsDone(@PathVariable String taskId,
+			   HttpSession session, Model model) {
+		   return "success";
+	   }
+	   
 	   @ModelAttribute
 	   public void populateUsers(Model model){
 		   List<User> users = userService.getUsers();
