@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -149,7 +148,7 @@ public class TaskController {
 	   
 	   //Making it transactional is solving the problem of closing the session which 
 	   //gets closed with transaction.
-	   @Transactional
+	   //@Transactional
 	   @RequestMapping(value="/showEdit/{taskId}",method=RequestMethod.GET)
 	   public String editTask(@PathVariable String taskId,
 			   HttpSession session,Model model)  {
@@ -160,7 +159,6 @@ public class TaskController {
 		   return "createTask";
 	  }
 
-	   @Transactional
 	   @RequestMapping(value="/{taskId}", method=RequestMethod.PUT)
 	   @ResponseBody
 	   public String toggleDone(@PathVariable String taskId,

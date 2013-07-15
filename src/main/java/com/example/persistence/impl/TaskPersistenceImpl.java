@@ -28,5 +28,9 @@ public class TaskPersistenceImpl extends GenericDAOImpl<Task, Long> implements T
 		return tasks;
 	}
 
+	@Override
+	public Task findById(Long id){
+		return (Task)getSession().get(getPersistenceClass(), id);
+	}
 	
 }

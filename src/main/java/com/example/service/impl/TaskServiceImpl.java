@@ -55,7 +55,7 @@ public class TaskServiceImpl implements TaskService{
 	public Task getTask(Long id) {
 		return taskPersistence.findById(id);
 	}
-
+	
 	 public String getFirstNameOfTaskCreator(Long taskId){
 		 return getTask(taskId).getCreatedBy().getFirstName();
 	 }
