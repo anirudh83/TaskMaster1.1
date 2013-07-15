@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -146,23 +147,34 @@ public class TaskController {
 		   return "successfully completed";
 	  }
 	   
+	   //Making it transactional is solving the problem of closing the session which 
+	   //gets closed with transaction.
+	   @Transactional
 	   @RequestMapping(value="/showEdit/{taskId}",method=RequestMethod.GET)
 	   public String editTask(@PathVariable String taskId,
 			   HttpSession session,Model model)  {
+		   
 		   Task task = taskService.getTask(Long.valueOf(taskId));
 		   TaskForm taskForm = populateTaskForm(task);
 		   model.addAttribute("task", taskForm);
 		   return "createTask";
 	  }
 
+	   @Transactional
 	   @RequestMapping(value="/{taskId}", method=RequestMethod.PUT)
 	   @ResponseBody
-	   public String markAsDone(@PathVariable String taskId,
+	   public String toggleDone(@PathVariable String taskId,
 			   HttpSession session, Model model) {
 		   Task task = taskService.getTask(Long.valueOf(taskId));
-		   task.setDone(true);
+		   String state = "true";
+		   if(task.isDone()){
+			   task.setDone(false);
+			   state="false";
+		   }else{
+			   task.setDone(true);
+		   }
 		   taskService.saveTask(task);
-		   return "success";
+		   return state;
 	   }
 	   
 	   @ModelAttribute
@@ -186,6 +198,7 @@ public class TaskController {
 		persistedTask.setDescription(task.getDescription());
 		persistedTask.setCreatedBy(user);
 		persistedTask.setDate(CommonUtils.getFormattedDateWithoutTime(task.getDate()));
+		persistedTask.setDone(task.isDone());
 		return persistedTask;
 	}
 
@@ -200,6 +213,7 @@ public class TaskController {
 		//transanction.
 		newTask.setCreatedBy(taskService.getFirstNameOfTaskCreator(task.getId()));
 		newTask.setDate(CommonUtils.getFormattedStringFromDate(task.getDate()));
+		newTask.setDone(task.isDone());
 
 		return newTask;
 	}

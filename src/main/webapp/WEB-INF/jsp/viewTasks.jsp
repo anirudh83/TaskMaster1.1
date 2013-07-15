@@ -43,7 +43,11 @@ function openCreateTaskForm(){
 			url : "/TaskMaster/task/"+id,
 			success : function(response){
 				var rowId = 'row'+id;
-				jQuery('#'+rowId).find("img").attr('src','<c:url value="/img/tick.jpg"/>')
+				if(response=="true"){
+				jQuery('#'+rowId).find("img").attr('src','<c:url value="/img/checkbox_checked.jpg"/>')
+				}else{
+					jQuery('#'+rowId).find("img").attr('src','<c:url value="/img/check_box.jpg"/>')
+				}
 			},
 			error : function(e){
                   alert('Error : '+e);				
@@ -85,7 +89,14 @@ ${task.createdBy}
 <td>
 ${task.date}
 </td>
-<td><a href="javascript:markAsDone(${task.id})"><img src="<c:url value="/img/check_blank.png"/>" height="32" width="32" alt="done"></a></td>
+<td><a href="javascript:markAsDone(${task.id})">
+<c:choose>
+<c:when test="${task.done}"><img src="<c:url value="/img/checkbox_checked.jpg"/>" height="32" width="32" alt="done">
+</c:when>
+<c:otherwise><img src="<c:url value="/img/check_box.jpg"/>" height="32" width="32" alt="done">
+</c:otherwise>
+</c:choose>
+</a></td>
 <td><a href="/TaskMaster/task/showEdit/${task.id }" class="btn btn-primary">Edit</a></td>
 <td><a href=javascript:deleteTask(${task.id}) class="btn btn-danger">Delete</a></td>
 </tr>
