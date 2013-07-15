@@ -28,7 +28,7 @@ public class TaskServiceImpl implements TaskService{
 		task.setDate(CommonUtils.getFormattedDate(date));
 		task.setCreatedBy(user);
 		
-		taskPersistence.saveTask(task);
+		taskPersistence.makePersistant(task);
 	}
 	
 	public List<Task> getTasksOfTheDay(String date) {
@@ -43,34 +43,21 @@ public class TaskServiceImpl implements TaskService{
 		return taskPersistence.getAllTasks(userName);
 	}
 	@Override
-	public void deleteTask(int id) {
-		taskPersistence.deleteTask(id);
+	public void deleteTask(Long id) {
+		Task task = taskPersistence.findById(id);
+		taskPersistence.delete(task);
 	}
 	@Override
 	public void saveTask(Task task) {
-		taskPersistence.saveTask(task);
+		taskPersistence.makePersistant(task);
 	}
 	@Override
-	public Task getTask(int id) {
-		return taskPersistence.getTask(id);
+	public Task getTask(Long id) {
+		return taskPersistence.findById(id);
 	}
 
-	@Override
-	public void updateTask(Task task) {
-		taskPersistence.updateTask(task);
-	}
-
-	@Override
-	public void closeSession() {
-		taskPersistence.closeSession();
-		
-	}
-
-	@Override
-	public Task merge(Task task) {
-		return taskPersistence.merge(task);
-		
-	}
-
+	 public String getFirstNameOfTaskCreator(Long taskId){
+		 return getTask(taskId).getCreatedBy().getFirstName();
+	 }
 	
 }

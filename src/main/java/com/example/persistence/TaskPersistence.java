@@ -4,14 +4,8 @@ import java.util.List;
 
 import com.example.model.Task;
 
-public interface TaskPersistence {
+public interface TaskPersistence extends GenericDAO<Task, Long>{
 
-	void saveTask(Task task);
 	List<Task> getAllTasks();
 	List<Task> getAllTasks(String userName);
-	void deleteTask(int id);
-	Task getTask(int id);
-	void updateTask(Task task);
-	void closeSession();
-	Task merge(Task task);
 }

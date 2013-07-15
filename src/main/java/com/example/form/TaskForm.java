@@ -5,18 +5,19 @@ import java.util.List;
 
 public class TaskForm {
 	
-	private int id;
+	private Long id;
 	private String name;
 	private String date;
 	private String description;
 	private String createdBy;
 	private List<String> dropDown;
+	private boolean done;
 	
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -48,6 +49,12 @@ public class TaskForm {
 	}
 	public void setDropDown(List<String> dropDown) {
 		this.dropDown = dropDown;
+	}
+	public boolean isDone() {
+		return done;
+	}
+	public void setDone(boolean done) {
+		this.done = done;
 	}
 	
 }

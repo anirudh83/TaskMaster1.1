@@ -8,7 +8,7 @@ package com.example.form;
  */
 public class MealForm {
 	
-	private int id;
+	private Long id;
 	private String breakfast;
 	private String lunch;
 	private String dinner;
@@ -16,10 +16,10 @@ public class MealForm {
 	private String createdBy;
 	
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getBreakfast() {

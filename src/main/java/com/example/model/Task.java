@@ -17,17 +17,19 @@ import javax.persistence.Table;
 @Table(name = "task")
 public class Task {
 	
-	private int id;
+	private Long id;
 	private String name;
 	private Date date;
 	private String description;
 	private User createdBy;
+	private boolean done;
+	private User assignedTo;
 	
 	public Task(){
 		
 	}
 	
-	public Task(int id, String name,Date date,String description,User createdBy){
+	public Task(Long id, String name,Date date,String description,User createdBy){
 		this.id=id;
 		this.name=name;
 		this.date=date;
@@ -38,10 +40,10 @@ public class Task {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
@@ -61,7 +63,7 @@ public class Task {
 		this.description = description;
 	}
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="userId")
+	@JoinColumn(name="userId" ,insertable=false,updatable=false)
 	public User getCreatedBy() {
 		return createdBy;
 	}
@@ -77,4 +79,24 @@ public class Task {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+
+	@Column(name="done")
+	public boolean isDone() {
+		return done;
+	}
+
+	public void setDone(boolean done) {
+		this.done = done;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="userId")
+	public User getAssignedTo() {
+		return assignedTo;
+	}
+
+	public void setAssignedTo(User assignedTo) {
+		this.assignedTo = assignedTo;
+	}
+	
 }

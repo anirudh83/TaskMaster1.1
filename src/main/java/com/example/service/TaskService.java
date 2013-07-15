@@ -12,10 +12,8 @@ public interface TaskService {
 	List<Task> getTasksOfTheDay(String date);
 	List<Task> getAllTasks();
 	List<Task> getAllTasks(String email);
-	void deleteTask(int id);
+	void deleteTask(Long id);
 	void saveTask(Task task);
-	Task getTask(int id);
-	void updateTask(Task task);
-	void closeSession();
-	Task merge(Task task);
+	Task getTask(Long id);
+	String getFirstNameOfTaskCreator(Long taskId);
 }

@@ -108,17 +108,19 @@ public class TaskController {
 			Model model,HttpSession session,
 			@RequestParam(value="fromPage",required=false)String fromPage,
 			@RequestParam(value="userId",required=false)String userId) throws ParseException {
-		int userIdInt = Integer.valueOf(userId);
-		User user = null;
-		if(userIdInt==0){
-			user = (User)session.getAttribute("user");
-		}else {
-		    user = userService.getUserById(userIdInt);
-		}
+		Long userIdInt = Long.valueOf(userId);
+			User user = (User)session.getAttribute("user");
+		    User assignedUser = userService.getUserById(userIdInt);
+		    if(userIdInt==0){
+		    	assignedUser=user;
+		    }
+		    
 		taskValidator.validate(task, bindingResult);
 		if(!bindingResult.hasErrors()){
 			Task newTask = populateTaskFromTaskForm(task,user);
-			taskService.updateTask(newTask);
+			newTask.setAssignedTo(assignedUser);
+			newTask.setDone(false);
+			taskService.saveTask(newTask);
 			model.addAttribute("sucessmsg", "Task was created Successfully");
 		}else{
 			model.addAttribute("sucessmsg", "Task was Not updated!");
@@ -140,14 +142,14 @@ public class TaskController {
 	   @ResponseBody
 	   public String deleteTask(@PathVariable String taskId,
 			   HttpSession session,Model model)  {
-		   taskService.deleteTask(Integer.parseInt(taskId));
+		   taskService.deleteTask(Long.valueOf(taskId));
 		   return "successfully completed";
 	  }
 	   
 	   @RequestMapping(value="/showEdit/{taskId}",method=RequestMethod.GET)
 	   public String editTask(@PathVariable String taskId,
 			   HttpSession session,Model model)  {
-		   Task task = taskService.getTask(Integer.parseInt(taskId));
+		   Task task = taskService.getTask(Long.valueOf(taskId));
 		   TaskForm taskForm = populateTaskForm(task);
 		   model.addAttribute("task", taskForm);
 		   return "createTask";
@@ -157,6 +159,9 @@ public class TaskController {
 	   @ResponseBody
 	   public String markAsDone(@PathVariable String taskId,
 			   HttpSession session, Model model) {
+		   Task task = taskService.getTask(Long.valueOf(taskId));
+		   task.setDone(true);
+		   taskService.saveTask(task);
 		   return "success";
 	   }
 	   
@@ -166,6 +171,7 @@ public class TaskController {
 		   model.addAttribute("users", users);
 	   }
 	   
+	  
 	/**
 	 * Takes argument of type TaskForm and gives a new Object of Task
 	 * 
@@ -189,7 +195,10 @@ public class TaskController {
 		newTask.setId(task.getId());
 		newTask.setName(task.getName());
 		newTask.setDescription(task.getDescription());
-		newTask.setCreatedBy(task.getCreatedBy().getFirstName());
+		//here task.getUSer.gertfirstname will not work as our transaction boundries 
+		//are within services, and in hibernate Lazy-Loading fetch is not supported outside
+		//transanction.
+		newTask.setCreatedBy(taskService.getFirstNameOfTaskCreator(task.getId()));
 		newTask.setDate(CommonUtils.getFormattedStringFromDate(task.getDate()));
 
 		return newTask;

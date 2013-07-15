@@ -1,7 +1,7 @@
 package com.example.controller;
 
 import java.text.ParseException;
-import java.util.Set;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -18,7 +18,6 @@ import com.example.common.CommonUtils;
 import com.example.form.MealForm;
 import com.example.model.Meal;
 import com.example.model.User;
-import com.example.persistence.UserPersistence;
 import com.example.service.MealService;
 
 /**
@@ -33,14 +32,11 @@ public class MealPlanController {
 	@Autowired
 	private MealService mealService;
 	
-	@Autowired
-	private UserPersistence userPersistence;
 	
 	@RequestMapping(value="/view/eatingschedule", method =RequestMethod.GET)
 	public String viewEatingSchedule(Model model,HttpSession session){
 		User user = (User)session.getAttribute("user");
-		User userFromHibernateSession = userPersistence.loadUser(user.getId());
-		Set<Meal> meals = userFromHibernateSession.getMeals();
+		List<Meal> meals = mealService.getAllMeals(user.getId());
 		model.addAttribute("meals", meals);
 		return "eatingSchedule";
 	}
@@ -55,7 +51,7 @@ public class MealPlanController {
 	@RequestMapping(value="/{id}" , method=RequestMethod.DELETE)
 	@ResponseBody
 	public String deleteMeal(@PathVariable String id){
-		mealService.deleteMeal(Integer.parseInt(id));
+		mealService.deleteMeal(Long.valueOf(id));
 		return "deleted successfully";
 	}
 	
@@ -71,10 +67,7 @@ public class MealPlanController {
 		newMeal.setDate(CommonUtils.getFormattedDateWithoutTime(meal.getDate()));
 		
 		mealService.createMeal(newMeal);
-		
-		User userFromHibernateSession = userPersistence.loadUser(user.getId());
-		//user.getMeals will do a DB call as it is lazily loaded.
-		model.addAttribute("meals", userFromHibernateSession.getMeals());
+		model.addAttribute("meals", mealService.getAllMeals(user.getId()));
 		return "eatingSchedule";
 	}
 }

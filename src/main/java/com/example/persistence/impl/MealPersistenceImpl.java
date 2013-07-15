@@ -1,9 +1,10 @@
 package com.example.persistence.impl;
 
+import java.util.List;
+
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.model.Meal;
 import com.example.persistence.MealPersistence;
@@ -14,34 +15,16 @@ import com.example.persistence.MealPersistence;
  *
  */
 @Repository
-public class MealPersistenceImpl implements MealPersistence{
-	
-	 @Autowired
-	 private SessionFactory sessionFactory;
+@Transactional
+public class MealPersistenceImpl extends GenericDAOImpl<Meal, Long> implements MealPersistence{
 
 	@Override
-	public Meal createMeal(Meal meal) {
+	public List<Meal> getAllMeals(Long userId) {
 		Session sess = getSession();
-		sess.save(meal);
-		sess.flush();
-		sess.close();
-		return meal;
-	}
-	
-	private Session getSession() {
-		return sessionFactory.openSession();
-	}
-	
-	public void refreshSession(){
-		getSession().flush();
-	}
-
-	@Override
-	public void delete(int mealId) {
-		Session  session = getSession();
-		session.delete(session.load(Meal.class, mealId));
-		session.flush();
-		session.close();
+		List<Meal> meals = sess.createQuery(
+			    "from Meal as meal where meal.createdBy = ?")
+			    .setLong(0, userId).list();
+		return meals;
 	}
 
 }

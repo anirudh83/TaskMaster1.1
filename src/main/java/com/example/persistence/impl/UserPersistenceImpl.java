@@ -4,51 +4,20 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.example.model.User;
 import com.example.persistence.UserPersistence;
 
 @Repository
-public class UserPersistenceImpl implements UserPersistence{
+public class UserPersistenceImpl extends GenericDAOImpl<User, Long> implements UserPersistence{
 	
-	 @Autowired
-	 private SessionFactory sessionFactory;
-
-	@Override
-	public User saveUser(User user) {
-		Session sess = getSession();
-		Transaction tx = sess.beginTransaction();
-		sess.save(user);
-		System.out.println("Successfully data inserted in database");
-		tx.commit();
-		return user;
-	}
-
-	private Session getSession() {
-		Session sess = sessionFactory.openSession();
-		return sess;
-	}
+	
 
 	public List<User> getAllUsers() {
 	    Query q = getSession().createQuery("from User");
 	    List<User> allUsers = (List<User>) q.list();
 	    return allUsers;
-	}
-
-	@Override
-	public User getUser(int id) {
-		Session sess = getSession();
-		return (User) sess.get(User.class, id);
-	}
-	
-	@Override
-	public User loadUser(int id){
-		Session sess = getSession();
-		return (User) sess.load(User.class, id);
 	}
 
 	@Override
@@ -60,11 +29,5 @@ public class UserPersistenceImpl implements UserPersistence{
 		return user;
 	}
 
-	@Override
-	public void refreshUser(User user) {
-		Session sess = getSession();
-		sess.evict(user);
-		sess.refresh(user);
-	}
 
 }

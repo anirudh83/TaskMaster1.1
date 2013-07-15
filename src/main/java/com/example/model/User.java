@@ -2,8 +2,8 @@ package com.example.model;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,21 +21,21 @@ uniqueConstraints=
 @UniqueConstraint(columnNames = {"id", "emailAddress"})) 
 public class User {
 
-	private int id;
+	private Long id;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String mobileNum;
 	private String password;
-	private Set<Task> tasks = new HashSet<Task>(0);
-	private Set<Meal> meals = new HashSet<Meal>(0);
+	private List<Task> tasks = new ArrayList<Task>(0);
+	private List<Meal> meals = new ArrayList<Meal>(0);
 
 	public User() {
 
 	}
 
-	public User(int id, String userName, String email, String mobileNum,
-			Set<Task> tasks, String password) {
+	public User(Long id, String userName, String email, String mobileNum,
+			List<Task> tasks, String password) {
 		this.id = id;
 		this.email = email;
 		this.mobileNum = mobileNum;
@@ -46,11 +46,11 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -74,11 +74,11 @@ public class User {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "createdBy", cascade = CascadeType.ALL)
-	public Set<Task> getTasks() {
+	public List<Task> getTasks() {
 		return tasks;
 	}
 
-	public void setTasks(Set<Task> tasks) {
+	public void setTasks(List<Task> tasks) {
 		this.tasks = tasks;
 	}
 
@@ -107,11 +107,11 @@ public class User {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "createdBy", cascade = CascadeType.ALL)
-	public Set<Meal> getMeals() {
+	public List<Meal> getMeals() {
 		return meals;
 	}
 
-	public void setMeals(Set<Meal> meals) {
+	public void setMeals(List<Meal> meals) {
 		this.meals = meals;
 	}
 	

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.model.Meal;
 import com.example.model.User;
 import com.example.persistence.UserPersistence;
 import com.example.service.UserService;
@@ -24,8 +25,8 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public User getUserById(int id) {
-		return userPersistence.getUser(id);
+	public User getUserById(Long id) {
+		return userPersistence.findById(id);
 	}
 
 	@Override
@@ -35,7 +36,12 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public User createUser(User user) {
-		return userPersistence.saveUser(user);
+		return userPersistence.makePersistant(user);
+	}
+
+	@Override
+	public List<Meal> getAllMeals(Long userId) {
+		return userPersistence.findById(userId).getMeals();
 	}
 
 

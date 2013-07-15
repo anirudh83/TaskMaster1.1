@@ -90,7 +90,7 @@ public class UserController {
 	@RequestMapping(value="/json/{id}" , method =RequestMethod.GET )
     @ResponseBody
 	public UserForm getUserInJSon(@PathVariable String id){
-		User userById = userService.getUserById(Integer.valueOf(id));
+		User userById = userService.getUserById(Long.valueOf(id));
 		if(userById!=null){
 			System.out.println("there is result");
 			return transform(userById);

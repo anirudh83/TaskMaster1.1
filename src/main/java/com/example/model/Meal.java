@@ -23,7 +23,7 @@ import javax.persistence.Table;
 @Table(name = "meal")
 public class Meal {
 
-	private int id;
+	private Long id;
 	private String breakfast;
 	private String lunch;
 	private String dinner;
@@ -34,11 +34,11 @@ public class Meal {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
