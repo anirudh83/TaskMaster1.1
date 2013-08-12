@@ -63,7 +63,7 @@ public class Task {
 		this.description = description;
 	}
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="userId" ,insertable=false,updatable=false)
+	@JoinColumn(name="createdByUserid")
 	public User getCreatedBy() {
 		return createdBy;
 	}
@@ -90,7 +90,7 @@ public class Task {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="userId")
+	@JoinColumn(name="assignedToUserid")
 	public User getAssignedTo() {
 		return assignedTo;
 	}

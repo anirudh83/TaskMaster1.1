@@ -58,7 +58,7 @@ function openLoginPage(){
 }
 
 function openCreateUserPage(){
-	window.open('user','_self',false);
+	window.open('users/createuser','_self',false);
 }
 </script>
     <link href="<c:url value="css/bootstrap-responsive.css"/>" rel="stylesheet">

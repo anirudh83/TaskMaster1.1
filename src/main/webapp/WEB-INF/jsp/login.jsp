@@ -8,7 +8,7 @@
 <script type="text/javascript">
 
 function openCreateUserPage(){
-	window.open('user','_self',false);
+	window.open('users','_self',false);
 }
 </script>
     <form class="form-horizontal" method="post" action="login">

@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +19,14 @@ import com.example.model.User;
 import com.example.service.UserService;
 import com.example.validator.UserValidator;
 
+
 /**
  * 
  * @author anirudh
  * 
  */
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 
 	@Autowired
@@ -32,7 +35,7 @@ public class UserController {
 	@Autowired
 	private UserValidator userValidator;
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value="/createuser" , method = RequestMethod.GET)
 	public String showCreateUserPage(Model model) {
 		UserForm user = new UserForm();
 		model.addAttribute("user", user);
@@ -100,6 +103,13 @@ public class UserController {
 			
 		}
 		 
+	}
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public String getUsers(Model model){
+		 List<User> users = userService.getUsers();
+		 model.addAttribute("users", users);
+		 return "searchUsers";
 	}
 	
 	
