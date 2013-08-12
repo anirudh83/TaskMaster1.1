@@ -44,7 +44,7 @@ public class MyFriendsController {
 	@RequestMapping(value = "/pending", method = RequestMethod.GET)
 	public String getPendingRequests(Model model, HttpSession session) {
 		User user = (User) session.getAttribute("user");
-		List<User> friends = userFriendMappingService.findFriends(user.getId(),FriendRequestStatus.PENDING.toString());
+		List<User> friends = userFriendMappingService.findPendingIncomingFriendRequests(user.getId());
 		model.addAttribute("friends", friends);
 		return "pendingFriendRequests";
 	}
@@ -54,7 +54,7 @@ public class MyFriendsController {
 	public String confirmAsFriend(@PathVariable("friendUserId") Long friendUserId,
 			HttpSession session) {
 		User user = (User) session.getAttribute("user");
-		userFriendMappingService.confirmFriend(user.getId(), friendUserId);
+		userFriendMappingService.confirmFriend(friendUserId,user.getId());
 		return "success";
 
 	}

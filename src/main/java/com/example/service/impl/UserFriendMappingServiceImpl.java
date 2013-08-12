@@ -27,10 +27,15 @@ public class UserFriendMappingServiceImpl implements UserFriendMappingService{
 	@Override
 	public List<User> findFriends(Long userId,String status) {
 		List<UserFriendMapping> allFriends = userFriendMappingPersistence.getAllFriends(userId,status);
+		List<UserFriendMapping> friendsWhoAddedMe = userFriendMappingPersistence.getByFriendId(userId,status);
 		List<User> friends = new ArrayList<User>();
 		for (UserFriendMapping userFriendMapping : allFriends) {
 			friends.add(userFriendMapping.getFriend());
 		}
+		for (UserFriendMapping userFriendMapping : friendsWhoAddedMe) {
+			friends.add(userFriendMapping.getUser());
+		}
+		
 		return friends;
 	}
 
@@ -55,6 +60,16 @@ public class UserFriendMappingServiceImpl implements UserFriendMappingService{
 		}else{
 			persistedMapping.setStatus(FriendRequestStatus.CONFIRMED.toString());
 		}
+	}
+
+	@Override
+	public List<User> findPendingIncomingFriendRequests(Long userId) {
+		List<UserFriendMapping> mappings = userFriendMappingPersistence.getByFriendId(userId,FriendRequestStatus.PENDING.toString());
+		List<User> friends = new ArrayList<User>();
+		for (UserFriendMapping userFriendMapping : mappings) {
+			friends.add(userFriendMapping.getUser());
+		}
+		return friends;
 	}
 	
 

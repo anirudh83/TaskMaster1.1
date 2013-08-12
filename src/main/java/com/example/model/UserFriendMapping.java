@@ -32,7 +32,7 @@ public class UserFriendMapping {
 		this.id = id;
 	}
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="userId")
 	public User getUser() {
 		return user;

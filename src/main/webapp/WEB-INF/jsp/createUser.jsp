@@ -12,7 +12,7 @@
 </head>
 <body>
 <div align="center">
-<form:form  method="post" commandName="user">
+<form:form  method="post" commandName="user" action="/TaskMaster/users">
 <table>
 <tr><td>First Name :</td>
 <td><form:input path="firstName" placeholder="Enter your first name" required="true" />

@@ -25,5 +25,12 @@ public class UserFriendMappingPersistenceImpl extends GenericDAOImpl<UserFriendM
 		return mapping;
 	}
 
+	@Override
+	public List<UserFriendMapping> getByFriendId(Long friendId,String status) {
+		Session sess = getSession();
+		List<UserFriendMapping> list = sess.createQuery("from UserFriendMapping as ufm where ufm.friend.id = ? and status =?").setLong(0, friendId).setString(1, status).list();
+		return list;
+	}
+
 	
 }
