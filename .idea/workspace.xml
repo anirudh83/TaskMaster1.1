@@ -5,7 +5,7 @@
     <ignored path="TaskMaster1.1.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/applicationContext.xml" changelist="30cba2ac-2e65-430a-8f6e-712cb6e2a55f" time="1379606655872" ignored="false" />
-    <file path="/pom.xml" changelist="30cba2ac-2e65-430a-8f6e-712cb6e2a55f" time="1381254166035" ignored="false" />
+    <file path="/pom.xml" changelist="30cba2ac-2e65-430a-8f6e-712cb6e2a55f" time="1381268442327" ignored="false" />
     <file path="/index.jsp" changelist="30cba2ac-2e65-430a-8f6e-712cb6e2a55f" time="1381258576822" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -76,10 +76,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="142" column="131" selection-start="4237" selection-end="4237" vertical-scroll-proportion="0.0">
+            <state line="112" column="9" selection-start="3374" selection-end="3374" vertical-scroll-proportion="0.30124223">
               <folding />
             </state>
           </provider>
@@ -103,10 +103,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.jsp" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="31" selection-start="786" selection-end="786" vertical-scroll-proportion="0.61806655">
+            <state line="26" column="31" selection-start="786" selection-end="786" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -123,8 +123,8 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -600,13 +600,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="142" column="131" selection-start="4237" selection-end="4237" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="44" column="30" selection-start="1038" selection-end="1038" vertical-scroll-proportion="0.0">
@@ -623,7 +616,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="31" selection-start="786" selection-end="786" vertical-scroll-proportion="0.61806655">
+        <state line="26" column="31" selection-start="786" selection-end="786" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="9" selection-start="3374" selection-end="3374" vertical-scroll-proportion="0.30124223">
           <folding />
         </state>
       </provider>

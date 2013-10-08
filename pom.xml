@@ -110,13 +110,13 @@
 		<artifactId>jta</artifactId>
 		<version>1.1</version>
 	</dependency>
-        <dependency>
+       <!-- <dependency>
             <groupId>com.example</groupId>
             <artifactId>TaskMaster</artifactId>
             <version>1.0</version>
             <type>war</type>
             <scope>provided</scope>
-        </dependency>
+        </dependency>     -->
 	</dependencies>
 	<build>
 		<finalName>TaskMaster</finalName>
@@ -139,6 +139,7 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
+            <!--
             <plugin>
                 <groupId>com.xebialabs.deployit</groupId>
                 <artifactId>maven-deployit-plugin</artifactId>
@@ -153,7 +154,7 @@
                 </deployable>
             </deployables>
             </configuration>
-            </plugin>
+            </plugin>   -->
         </plugins>
 	</build>
     <pluginRepositories>
