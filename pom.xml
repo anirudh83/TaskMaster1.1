@@ -4,10 +4,9 @@
 	<groupId>com.example</groupId>
 	<artifactId>TaskMaster</artifactId>
 	<packaging>war</packaging>
-	<version>1.0-SNAPSHOT</version>
-	<name>TaskMaster Maven Webapp</name>
-	<url>http://maven.apache.org</url>
-	
+	<version>1.0</version>
+    <name>TaskMaster</name>
+
 	<properties>
 	<spring.version>3.2.2.RELEASE</spring.version>
 	<jackson.version>1.9.10</jackson.version>
@@ -111,6 +110,13 @@
 		<artifactId>jta</artifactId>
 		<version>1.1</version>
 	</dependency>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>TaskMaster</artifactId>
+            <version>1.0</version>
+            <type>war</type>
+            <scope>provided</scope>
+        </dependency>
 	</dependencies>
 	<build>
 		<finalName>TaskMaster</finalName>
@@ -133,6 +139,31 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-		</plugins>
+            <plugin>
+                <groupId>com.xebialabs.deployit</groupId>
+                <artifactId>maven-deployit-plugin</artifactId>
+                <version>3.9.0</version>
+            <configuration>
+            <deployables>
+                <deployable>
+                    <name>TaskMaster</name>
+                    <type>jee.War</type>
+                    <groupId>com.example</groupId>
+                    <artifactId>TaskMaster</artifactId>
+                </deployable>
+            </deployables>
+            </configuration>
+            </plugin>
+        </plugins>
 	</build>
+    <pluginRepositories>
+            <pluginRepository>
+                <id>nexus-dexter-releases</id>
+                <url>http://nexus.xebialabs.com/nexus/content/repositories/releases</url>
+            </pluginRepository>
+            <pluginRepository>
+                <id>nexus-dexter-snapshots</id>
+                <url>http://nexus.xebialabs.com/nexus/content/repositories/snapshots</url>
+            </pluginRepository>
+    </pluginRepositories>
 </project>

@@ -19,13 +19,13 @@
 	
 	<mvc:annotation-driven />
 	<tx:annotation-driven transaction-manager="transactionManager" />
-    <!--
+
     <bean
         class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
     <property name="location">
          <value>/properties/database.local.properties</value>
-          <value>/properties/database.dev.properties</value>
-	/property>
+        <!--  <value>/properties/database.dev.properties</value>      -->
+	</property>
    </bean>
 
 
@@ -36,8 +36,8 @@
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 	</bean>
-      -->
 
+           <!--
     <bean class="java.net.URI" id="dbUrl">
         <constructor-arg value="#{systemEnvironment['DATABASE_URL']}"/>
     </bean>
@@ -49,7 +49,7 @@
         <property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>
     </bean>
 
-
+             -->
 
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">

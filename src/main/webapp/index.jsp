@@ -17,7 +17,7 @@ function openCreateUserPage(){
 </script>
 
     <div class="hero-unit">
-    <h1>Welcome to Task Master</h1>
+    <h1>Welcome to Task Master auto-deployed by Jenkins-Deployit</h1>
     <p>Managing Tasks was never so easy! You can make your tasks view them and mark them as done, see them from anywhere!</p>
     <p>
     <a class="btn btn-primary btn-large" href="javascript:openCreateUserPage()">
