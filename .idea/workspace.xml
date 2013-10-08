@@ -76,19 +76,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="9" selection-start="3374" selection-end="3374" vertical-scroll-proportion="0.30124223">
+            <state line="112" column="9" selection-start="3374" selection-end="3374" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.jsp" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="home.jsp" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="30" selection-start="1038" selection-end="1038" vertical-scroll-proportion="0.0">
+            <state line="51" column="14" selection-start="1586" selection-end="1586" vertical-scroll-proportion="0.6040373">
               <folding />
             </state>
           </provider>
@@ -125,6 +125,7 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home.jsp" />
       </list>
     </option>
   </component>
@@ -600,9 +601,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home.jsp">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="30" selection-start="1038" selection-end="1038" vertical-scroll-proportion="0.0">
+        <state line="112" column="9" selection-start="3374" selection-end="3374" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -621,9 +622,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="9" selection-start="3374" selection-end="3374" vertical-scroll-proportion="0.30124223">
+        <state line="51" column="14" selection-start="1586" selection-end="1586" vertical-scroll-proportion="0.6040373">
           <folding />
         </state>
       </provider>

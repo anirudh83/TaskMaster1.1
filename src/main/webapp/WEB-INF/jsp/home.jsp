@@ -50,7 +50,6 @@ function openMyFriendsPage(){
 <h3>&nbsp</h3>
 <input type="button" class="btn btn-success btn-large"  value="Eating Schedule" onclick="javascript:openEatingScheduleForm();">
 <h3>&nbsp</h3>
-<input type="button" class="btn btn-success btn-large"  value="Todays Exercise Schedule" onclick="javascript:openExerciseScheduleForm();">
 <h3>&nbsp</h3>
 <input type="button" class="btn btn-success btn-large"  value="My Friends" onclick="javascript:openMyFriendsPage();">
 <h3>&nbsp</h3>
