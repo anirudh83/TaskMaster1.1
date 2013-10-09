@@ -5,8 +5,9 @@
     <ignored path="TaskMaster1.1.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/applicationContext.xml" changelist="30cba2ac-2e65-430a-8f6e-712cb6e2a55f" time="1379606655872" ignored="false" />
-    <file path="/pom.xml" changelist="30cba2ac-2e65-430a-8f6e-712cb6e2a55f" time="1381268442327" ignored="false" />
+    <file path="/pom.xml" changelist="30cba2ac-2e65-430a-8f6e-712cb6e2a55f" time="1381312215481" ignored="false" />
     <file path="/index.jsp" changelist="30cba2ac-2e65-430a-8f6e-712cb6e2a55f" time="1381258576822" ignored="false" />
+    <file path="/home.jsp" changelist="30cba2ac-2e65-430a-8f6e-712cb6e2a55f" time="1381317138870" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +22,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -58,6 +58,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -79,7 +80,7 @@
       <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="9" selection-start="3374" selection-end="3374" vertical-scroll-proportion="0.0">
+            <state line="131" column="58" selection-start="3959" selection-end="3959" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -88,25 +89,7 @@
       <file leaf-file-name="home.jsp" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="0" selection-start="1587" selection-end="1587" vertical-scroll-proportion="0.6273292">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="31" selection-start="786" selection-end="786" vertical-scroll-proportion="0.0">
+            <state line="52" column="77" selection-start="1664" selection-end="1664" vertical-scroll-proportion="0.6040373">
               <folding />
             </state>
           </provider>
@@ -177,8 +160,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -601,13 +584,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="9" selection-start="3374" selection-end="3374" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -622,9 +598,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="131" column="58" selection-start="3959" selection-end="3959" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="0" selection-start="1587" selection-end="1587" vertical-scroll-proportion="0.6273292">
+        <state line="52" column="77" selection-start="1664" selection-end="1664" vertical-scroll-proportion="0.6040373">
           <folding />
         </state>
       </provider>
