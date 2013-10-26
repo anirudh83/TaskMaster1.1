@@ -2,6 +2,15 @@ TaskMaster1.1
 =============
 
 TaskMaster1.1
+IT is a tasks management system. It is built using :
+1.)Spring 3 MVC
+2.)Spring DI
+3.)REST support for Spring MVC
+4.)Twitter Bootstrap API
+5.)Hibernate 3
+6.)MySQL 5
+7.)Tomcat 7
+
 
 The project is build using maven.
 It uses mvn tomcat plugin.
