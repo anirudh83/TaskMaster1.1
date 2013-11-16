@@ -119,7 +119,7 @@ function openCreateUserPage(){
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
-        <h1>Welcome to Task Master</h1>
+        <h1>Welcome to Task Master version 2</h1>
         <p>Managing Tasks was never so easy!You can make your tasks view them and mark them as done.
         <br>And see them from anywhere!</p>
         <p>
