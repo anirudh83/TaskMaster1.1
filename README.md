@@ -24,3 +24,4 @@ After checking out :
 
 In order to deploy this app on openshift see this blog :
 http://anirudhbhatnagar.wordpress.com/2013/06/17/adding-my-spring-mvc-hibernate-app-to-openshift/
+
